@@ -5,8 +5,6 @@ CREATE TYPE "AirStatus" AS ENUM ('GOOD', 'MODERATE', 'UNHEALTHY', 'VERY_UNHEALTH
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "walletAddress" TEXT NOT NULL,
-    "signature" TEXT NOT NULL,
-    "signupMessage" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "placeId" TEXT,

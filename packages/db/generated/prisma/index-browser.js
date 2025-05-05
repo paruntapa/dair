@@ -123,8 +123,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   walletAddress: 'walletAddress',
-  signature: 'signature',
-  signupMessage: 'signupMessage',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   placeId: 'placeId'
@@ -140,17 +138,18 @@ exports.Prisma.ValidatorScalarFieldEnum = {
 exports.Prisma.PlaceScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  name: 'name',
-  location: 'location',
+  placeName: 'placeName',
   latitude: 'latitude',
   longitude: 'longitude',
+  disabled: 'disabled',
+  validatedByWallet: 'validatedByWallet',
+  validatorFetching: 'validatorFetching',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AirQualityScalarFieldEnum = {
   id: 'id',
-  validatorId: 'validatorId',
   placeId: 'placeId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',

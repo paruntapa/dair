@@ -1,21 +1,55 @@
 "use client";
-import React from 'react'
-import {
-    WalletDisconnectButton,
-    WalletMultiButton
-} from '@solana/wallet-adapter-react-ui';
+import React, { useEffect } from 'react'
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { useWallet } from '@solana/wallet-adapter-react';
+import axios from 'axios';
+import { WalletDisplay } from './WalletDisplay';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '../contexts/AuthContext';
 
 const AppBar = () => {
-  const { publicKey } = useWallet();
+  const { publicKey, signMessage } = useWallet();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+  const router = useRouter();
+
+  async function authenticate() {
+    if (!publicKey || isAuthenticated) {
+        return;
+    }
+
+    try {
+      const message = new TextEncoder().encode(
+          `Sign into Dair with ${publicKey} at ${new Date().toLocaleString('en-US')}`
+      );
+      const signature = await signMessage?.(message);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/user/signin`, {
+        signature: { data: Array.from(signature!) },
+        publicKey: publicKey?.toString(),
+        message: Array.from(message)
+      });
+
+      if (response.status === 200) {
+        localStorage.setItem("token", response.data.token);
+        setIsAuthenticated(true);
+      }
+    } catch (error) {
+      console.error("Authentication failed:", error);
+    }
+  }
+
+  useEffect(() => {
+    if (publicKey && !isAuthenticated) {
+      authenticate();
+    }
+  }, [publicKey, isAuthenticated]);
   
   return (
-    <div className='flex justify-between border-b m-1 border-gray-200 items-center'>
+    <div className='flex justify-between border-b m-1 border-gray-700 items-center py-3 px-4'>
         <div>
-            <h1 className='text-2xl px-2 font-bold'>Dair</h1>
+            <h1 className='text-2xl px-2 font-bold cursor-pointer' onClick={() => router.push('/')}>Dair</h1>
         </div>
-        <div>
-            <div className='hover:underline mb-2 rounded-md'>{publicKey ? <WalletDisconnectButton/> : <WalletMultiButton/>}</div>
+        <div className='flex items-center gap-4'>
+            {publicKey ? <WalletDisplay /> : <WalletMultiButton />}
         </div>
     </div>
   )

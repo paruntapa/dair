@@ -8,6 +8,7 @@ import { clusterApiUrl } from '@solana/web3.js';
 import '@solana/wallet-adapter-react-ui/styles.css';
 import { useMemo } from 'react';
 import AppBar from "../components/AppBar";
+import { AuthProvider } from '../contexts/AuthContext';
 
 export default function RootLayout({
   children,
@@ -19,15 +20,20 @@ export default function RootLayout({
   const wallets = useMemo(
     () => [],
     [network]
-);
+  );
+  
   return (
-        <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} autoConnect>
-                <WalletModalProvider>
-                  <AppBar />
-                    {children}
-                </WalletModalProvider>
-            </WalletProvider>
-        </ConnectionProvider>
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>
+          <AuthProvider>
+            <div className="min-h-screen bg-black">
+              <AppBar />
+              {children}
+            </div>
+          </AuthProvider>
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 }

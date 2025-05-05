@@ -1190,37 +1190,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type ValidatorCountOutputType
-   */
-
-  export type ValidatorCountOutputType = {
-    airQuality: number
-  }
-
-  export type ValidatorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    airQuality?: boolean | ValidatorCountOutputTypeCountAirQualityArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * ValidatorCountOutputType without action
-   */
-  export type ValidatorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the ValidatorCountOutputType
-     */
-    select?: ValidatorCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * ValidatorCountOutputType without action
-   */
-  export type ValidatorCountOutputTypeCountAirQualityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AirQualityWhereInput
-  }
-
-
-  /**
    * Count Type PlaceCountOutputType
    */
 
@@ -1268,8 +1237,6 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: string | null
     walletAddress: string | null
-    signature: string | null
-    signupMessage: string | null
     createdAt: Date | null
     updatedAt: Date | null
     placeId: string | null
@@ -1278,8 +1245,6 @@ export namespace Prisma {
   export type UserMaxAggregateOutputType = {
     id: string | null
     walletAddress: string | null
-    signature: string | null
-    signupMessage: string | null
     createdAt: Date | null
     updatedAt: Date | null
     placeId: string | null
@@ -1288,8 +1253,6 @@ export namespace Prisma {
   export type UserCountAggregateOutputType = {
     id: number
     walletAddress: number
-    signature: number
-    signupMessage: number
     createdAt: number
     updatedAt: number
     placeId: number
@@ -1300,8 +1263,6 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     walletAddress?: true
-    signature?: true
-    signupMessage?: true
     createdAt?: true
     updatedAt?: true
     placeId?: true
@@ -1310,8 +1271,6 @@ export namespace Prisma {
   export type UserMaxAggregateInputType = {
     id?: true
     walletAddress?: true
-    signature?: true
-    signupMessage?: true
     createdAt?: true
     updatedAt?: true
     placeId?: true
@@ -1320,8 +1279,6 @@ export namespace Prisma {
   export type UserCountAggregateInputType = {
     id?: true
     walletAddress?: true
-    signature?: true
-    signupMessage?: true
     createdAt?: true
     updatedAt?: true
     placeId?: true
@@ -1403,8 +1360,6 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     walletAddress: string
-    signature: string
-    signupMessage: string
     createdAt: Date
     updatedAt: Date
     placeId: string | null
@@ -1430,8 +1385,6 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walletAddress?: boolean
-    signature?: boolean
-    signupMessage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     placeId?: boolean
@@ -1442,8 +1395,6 @@ export namespace Prisma {
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walletAddress?: boolean
-    signature?: boolean
-    signupMessage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     placeId?: boolean
@@ -1452,8 +1403,6 @@ export namespace Prisma {
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walletAddress?: boolean
-    signature?: boolean
-    signupMessage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     placeId?: boolean
@@ -1462,14 +1411,12 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     walletAddress?: boolean
-    signature?: boolean
-    signupMessage?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     placeId?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "signature" | "signupMessage" | "createdAt" | "updatedAt" | "placeId", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "createdAt" | "updatedAt" | "placeId", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     place?: boolean | User$placeArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1485,8 +1432,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       walletAddress: string
-      signature: string
-      signupMessage: string
       createdAt: Date
       updatedAt: Date
       placeId: string | null
@@ -1916,8 +1861,6 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly walletAddress: FieldRef<"User", 'String'>
-    readonly signature: FieldRef<"User", 'String'>
-    readonly signupMessage: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly placeId: FieldRef<"User", 'String'>
@@ -2507,8 +2450,6 @@ export namespace Prisma {
     walletAddress?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    airQuality?: boolean | Validator$airQualityArgs<ExtArgs>
-    _count?: boolean | ValidatorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["validator"]>
 
   export type ValidatorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2533,18 +2474,10 @@ export namespace Prisma {
   }
 
   export type ValidatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "createdAt" | "updatedAt", ExtArgs["result"]["validator"]>
-  export type ValidatorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    airQuality?: boolean | Validator$airQualityArgs<ExtArgs>
-    _count?: boolean | ValidatorCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type ValidatorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type ValidatorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $ValidatorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Validator"
-    objects: {
-      airQuality: Prisma.$AirQualityPayload<ExtArgs>[]
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
       walletAddress: string
@@ -2944,7 +2877,6 @@ export namespace Prisma {
    */
   export interface Prisma__ValidatorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    airQuality<T extends Validator$airQualityArgs<ExtArgs> = {}>(args?: Subset<T, Validator$airQualityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirQualityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2995,10 +2927,6 @@ export namespace Prisma {
      */
     omit?: ValidatorOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
-    /**
      * Filter, which Validator to fetch.
      */
     where: ValidatorWhereUniqueInput
@@ -3017,10 +2945,6 @@ export namespace Prisma {
      */
     omit?: ValidatorOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
-    /**
      * Filter, which Validator to fetch.
      */
     where: ValidatorWhereUniqueInput
@@ -3038,10 +2962,6 @@ export namespace Prisma {
      * Omit specific fields from the Validator
      */
     omit?: ValidatorOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
     /**
      * Filter, which Validator to fetch.
      */
@@ -3091,10 +3011,6 @@ export namespace Prisma {
      */
     omit?: ValidatorOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
-    /**
      * Filter, which Validator to fetch.
      */
     where?: ValidatorWhereInput
@@ -3143,10 +3059,6 @@ export namespace Prisma {
      */
     omit?: ValidatorOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
-    /**
      * Filter, which Validators to fetch.
      */
     where?: ValidatorWhereInput
@@ -3189,10 +3101,6 @@ export namespace Prisma {
      * Omit specific fields from the Validator
      */
     omit?: ValidatorOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
     /**
      * The data needed to create a Validator.
      */
@@ -3241,10 +3149,6 @@ export namespace Prisma {
      * Omit specific fields from the Validator
      */
     omit?: ValidatorOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
     /**
      * The data needed to update a Validator.
      */
@@ -3312,10 +3216,6 @@ export namespace Prisma {
      */
     omit?: ValidatorOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
-    /**
      * The filter to search for the Validator to update in case it exists.
      */
     where: ValidatorWhereUniqueInput
@@ -3342,10 +3242,6 @@ export namespace Prisma {
      */
     omit?: ValidatorOmit<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
-    /**
      * Filter which Validator to delete.
      */
     where: ValidatorWhereUniqueInput
@@ -3366,30 +3262,6 @@ export namespace Prisma {
   }
 
   /**
-   * Validator.airQuality
-   */
-  export type Validator$airQualityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the AirQuality
-     */
-    select?: AirQualitySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the AirQuality
-     */
-    omit?: AirQualityOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AirQualityInclude<ExtArgs> | null
-    where?: AirQualityWhereInput
-    orderBy?: AirQualityOrderByWithRelationInput | AirQualityOrderByWithRelationInput[]
-    cursor?: AirQualityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AirQualityScalarFieldEnum | AirQualityScalarFieldEnum[]
-  }
-
-  /**
    * Validator without action
    */
   export type ValidatorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3401,10 +3273,6 @@ export namespace Prisma {
      * Omit specific fields from the Validator
      */
     omit?: ValidatorOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ValidatorInclude<ExtArgs> | null
   }
 
 
@@ -3433,10 +3301,12 @@ export namespace Prisma {
   export type PlaceMinAggregateOutputType = {
     id: string | null
     userId: string | null
-    name: string | null
-    location: string | null
+    placeName: string | null
     latitude: number | null
     longitude: number | null
+    disabled: boolean | null
+    validatedByWallet: string | null
+    validatorFetching: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3444,10 +3314,12 @@ export namespace Prisma {
   export type PlaceMaxAggregateOutputType = {
     id: string | null
     userId: string | null
-    name: string | null
-    location: string | null
+    placeName: string | null
     latitude: number | null
     longitude: number | null
+    disabled: boolean | null
+    validatedByWallet: string | null
+    validatorFetching: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -3455,10 +3327,12 @@ export namespace Prisma {
   export type PlaceCountAggregateOutputType = {
     id: number
     userId: number
-    name: number
-    location: number
+    placeName: number
     latitude: number
     longitude: number
+    disabled: number
+    validatedByWallet: number
+    validatorFetching: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -3478,10 +3352,12 @@ export namespace Prisma {
   export type PlaceMinAggregateInputType = {
     id?: true
     userId?: true
-    name?: true
-    location?: true
+    placeName?: true
     latitude?: true
     longitude?: true
+    disabled?: true
+    validatedByWallet?: true
+    validatorFetching?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3489,10 +3365,12 @@ export namespace Prisma {
   export type PlaceMaxAggregateInputType = {
     id?: true
     userId?: true
-    name?: true
-    location?: true
+    placeName?: true
     latitude?: true
     longitude?: true
+    disabled?: true
+    validatedByWallet?: true
+    validatorFetching?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -3500,10 +3378,12 @@ export namespace Prisma {
   export type PlaceCountAggregateInputType = {
     id?: true
     userId?: true
-    name?: true
-    location?: true
+    placeName?: true
     latitude?: true
     longitude?: true
+    disabled?: true
+    validatedByWallet?: true
+    validatorFetching?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -3598,10 +3478,12 @@ export namespace Prisma {
   export type PlaceGroupByOutputType = {
     id: string
     userId: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled: boolean
+    validatedByWallet: string | null
+    validatorFetching: boolean
     createdAt: Date
     updatedAt: Date
     _count: PlaceCountAggregateOutputType | null
@@ -3628,10 +3510,12 @@ export namespace Prisma {
   export type PlaceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    name?: boolean
-    location?: boolean
+    placeName?: boolean
     latitude?: boolean
     longitude?: boolean
+    disabled?: boolean
+    validatedByWallet?: boolean
+    validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     airQuality?: boolean | Place$airQualityArgs<ExtArgs>
@@ -3642,10 +3526,12 @@ export namespace Prisma {
   export type PlaceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    name?: boolean
-    location?: boolean
+    placeName?: boolean
     latitude?: boolean
     longitude?: boolean
+    disabled?: boolean
+    validatedByWallet?: boolean
+    validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3654,10 +3540,12 @@ export namespace Prisma {
   export type PlaceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    name?: boolean
-    location?: boolean
+    placeName?: boolean
     latitude?: boolean
     longitude?: boolean
+    disabled?: boolean
+    validatedByWallet?: boolean
+    validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3666,15 +3554,17 @@ export namespace Prisma {
   export type PlaceSelectScalar = {
     id?: boolean
     userId?: boolean
-    name?: boolean
-    location?: boolean
+    placeName?: boolean
     latitude?: boolean
     longitude?: boolean
+    disabled?: boolean
+    validatedByWallet?: boolean
+    validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type PlaceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "name" | "location" | "latitude" | "longitude" | "createdAt" | "updatedAt", ExtArgs["result"]["place"]>
+  export type PlaceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "placeName" | "latitude" | "longitude" | "disabled" | "validatedByWallet" | "validatorFetching" | "createdAt" | "updatedAt", ExtArgs["result"]["place"]>
   export type PlaceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -3696,10 +3586,12 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
-      name: string
-      location: string
+      placeName: string
       latitude: number
       longitude: number
+      disabled: boolean
+      validatedByWallet: string | null
+      validatorFetching: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["place"]>
@@ -4129,10 +4021,12 @@ export namespace Prisma {
   interface PlaceFieldRefs {
     readonly id: FieldRef<"Place", 'String'>
     readonly userId: FieldRef<"Place", 'String'>
-    readonly name: FieldRef<"Place", 'String'>
-    readonly location: FieldRef<"Place", 'String'>
+    readonly placeName: FieldRef<"Place", 'String'>
     readonly latitude: FieldRef<"Place", 'Float'>
     readonly longitude: FieldRef<"Place", 'Float'>
+    readonly disabled: FieldRef<"Place", 'Boolean'>
+    readonly validatedByWallet: FieldRef<"Place", 'String'>
+    readonly validatorFetching: FieldRef<"Place", 'Boolean'>
     readonly createdAt: FieldRef<"Place", 'DateTime'>
     readonly updatedAt: FieldRef<"Place", 'DateTime'>
   }
@@ -4611,7 +4505,6 @@ export namespace Prisma {
 
   export type AirQualityMinAggregateOutputType = {
     id: string | null
-    validatorId: string | null
     placeId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4629,7 +4522,6 @@ export namespace Prisma {
 
   export type AirQualityMaxAggregateOutputType = {
     id: string | null
-    validatorId: string | null
     placeId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4647,7 +4539,6 @@ export namespace Prisma {
 
   export type AirQualityCountAggregateOutputType = {
     id: number
-    validatorId: number
     placeId: number
     createdAt: number
     updatedAt: number
@@ -4691,7 +4582,6 @@ export namespace Prisma {
 
   export type AirQualityMinAggregateInputType = {
     id?: true
-    validatorId?: true
     placeId?: true
     createdAt?: true
     updatedAt?: true
@@ -4709,7 +4599,6 @@ export namespace Prisma {
 
   export type AirQualityMaxAggregateInputType = {
     id?: true
-    validatorId?: true
     placeId?: true
     createdAt?: true
     updatedAt?: true
@@ -4727,7 +4616,6 @@ export namespace Prisma {
 
   export type AirQualityCountAggregateInputType = {
     id?: true
-    validatorId?: true
     placeId?: true
     createdAt?: true
     updatedAt?: true
@@ -4832,7 +4720,6 @@ export namespace Prisma {
 
   export type AirQualityGroupByOutputType = {
     id: string
-    validatorId: string
     placeId: string
     createdAt: Date
     updatedAt: Date
@@ -4869,7 +4756,6 @@ export namespace Prisma {
 
   export type AirQualitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    validatorId?: boolean
     placeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4883,13 +4769,11 @@ export namespace Prisma {
     co?: boolean
     so2?: boolean
     no2?: boolean
-    validator?: boolean | ValidatorDefaultArgs<ExtArgs>
     place?: boolean | PlaceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airQuality"]>
 
   export type AirQualitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    validatorId?: boolean
     placeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4903,13 +4787,11 @@ export namespace Prisma {
     co?: boolean
     so2?: boolean
     no2?: boolean
-    validator?: boolean | ValidatorDefaultArgs<ExtArgs>
     place?: boolean | PlaceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airQuality"]>
 
   export type AirQualitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    validatorId?: boolean
     placeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4923,13 +4805,11 @@ export namespace Prisma {
     co?: boolean
     so2?: boolean
     no2?: boolean
-    validator?: boolean | ValidatorDefaultArgs<ExtArgs>
     place?: boolean | PlaceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airQuality"]>
 
   export type AirQualitySelectScalar = {
     id?: boolean
-    validatorId?: boolean
     placeId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4945,29 +4825,24 @@ export namespace Prisma {
     no2?: boolean
   }
 
-  export type AirQualityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "validatorId" | "placeId" | "createdAt" | "updatedAt" | "status" | "aqi" | "pm25" | "no" | "o3" | "nh3" | "pm10" | "co" | "so2" | "no2", ExtArgs["result"]["airQuality"]>
+  export type AirQualityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "placeId" | "createdAt" | "updatedAt" | "status" | "aqi" | "pm25" | "no" | "o3" | "nh3" | "pm10" | "co" | "so2" | "no2", ExtArgs["result"]["airQuality"]>
   export type AirQualityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    validator?: boolean | ValidatorDefaultArgs<ExtArgs>
     place?: boolean | PlaceDefaultArgs<ExtArgs>
   }
   export type AirQualityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    validator?: boolean | ValidatorDefaultArgs<ExtArgs>
     place?: boolean | PlaceDefaultArgs<ExtArgs>
   }
   export type AirQualityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    validator?: boolean | ValidatorDefaultArgs<ExtArgs>
     place?: boolean | PlaceDefaultArgs<ExtArgs>
   }
 
   export type $AirQualityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AirQuality"
     objects: {
-      validator: Prisma.$ValidatorPayload<ExtArgs>
       place: Prisma.$PlacePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      validatorId: string
       placeId: string
       createdAt: Date
       updatedAt: Date
@@ -5375,7 +5250,6 @@ export namespace Prisma {
    */
   export interface Prisma__AirQualityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    validator<T extends ValidatorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ValidatorDefaultArgs<ExtArgs>>): Prisma__ValidatorClient<$Result.GetResult<Prisma.$ValidatorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     place<T extends PlaceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlaceDefaultArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5407,7 +5281,6 @@ export namespace Prisma {
    */
   interface AirQualityFieldRefs {
     readonly id: FieldRef<"AirQuality", 'String'>
-    readonly validatorId: FieldRef<"AirQuality", 'String'>
     readonly placeId: FieldRef<"AirQuality", 'String'>
     readonly createdAt: FieldRef<"AirQuality", 'DateTime'>
     readonly updatedAt: FieldRef<"AirQuality", 'DateTime'>
@@ -5852,8 +5725,6 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     walletAddress: 'walletAddress',
-    signature: 'signature',
-    signupMessage: 'signupMessage',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     placeId: 'placeId'
@@ -5875,10 +5746,12 @@ export namespace Prisma {
   export const PlaceScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    name: 'name',
-    location: 'location',
+    placeName: 'placeName',
     latitude: 'latitude',
     longitude: 'longitude',
+    disabled: 'disabled',
+    validatedByWallet: 'validatedByWallet',
+    validatorFetching: 'validatorFetching',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5888,7 +5761,6 @@ export namespace Prisma {
 
   export const AirQualityScalarFieldEnum: {
     id: 'id',
-    validatorId: 'validatorId',
     placeId: 'placeId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -5979,6 +5851,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'AirStatus'
    */
   export type EnumAirStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AirStatus'>
@@ -6015,8 +5894,6 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     walletAddress?: StringFilter<"User"> | string
-    signature?: StringFilter<"User"> | string
-    signupMessage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     placeId?: StringNullableFilter<"User"> | string | null
@@ -6026,8 +5903,6 @@ export namespace Prisma {
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     walletAddress?: SortOrder
-    signature?: SortOrder
-    signupMessage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     placeId?: SortOrderInput | SortOrder
@@ -6040,8 +5915,6 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    signature?: StringFilter<"User"> | string
-    signupMessage?: StringFilter<"User"> | string
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     placeId?: StringNullableFilter<"User"> | string | null
@@ -6051,8 +5924,6 @@ export namespace Prisma {
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     walletAddress?: SortOrder
-    signature?: SortOrder
-    signupMessage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     placeId?: SortOrderInput | SortOrder
@@ -6067,8 +5938,6 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     walletAddress?: StringWithAggregatesFilter<"User"> | string
-    signature?: StringWithAggregatesFilter<"User"> | string
-    signupMessage?: StringWithAggregatesFilter<"User"> | string
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     placeId?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -6082,7 +5951,6 @@ export namespace Prisma {
     walletAddress?: StringFilter<"Validator"> | string
     createdAt?: DateTimeFilter<"Validator"> | Date | string
     updatedAt?: DateTimeFilter<"Validator"> | Date | string
-    airQuality?: AirQualityListRelationFilter
   }
 
   export type ValidatorOrderByWithRelationInput = {
@@ -6090,7 +5958,6 @@ export namespace Prisma {
     walletAddress?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    airQuality?: AirQualityOrderByRelationAggregateInput
   }
 
   export type ValidatorWhereUniqueInput = Prisma.AtLeast<{
@@ -6101,7 +5968,6 @@ export namespace Prisma {
     NOT?: ValidatorWhereInput | ValidatorWhereInput[]
     createdAt?: DateTimeFilter<"Validator"> | Date | string
     updatedAt?: DateTimeFilter<"Validator"> | Date | string
-    airQuality?: AirQualityListRelationFilter
   }, "id" | "walletAddress">
 
   export type ValidatorOrderByWithAggregationInput = {
@@ -6130,10 +5996,12 @@ export namespace Prisma {
     NOT?: PlaceWhereInput | PlaceWhereInput[]
     id?: StringFilter<"Place"> | string
     userId?: StringFilter<"Place"> | string
-    name?: StringFilter<"Place"> | string
-    location?: StringFilter<"Place"> | string
+    placeName?: StringFilter<"Place"> | string
     latitude?: FloatFilter<"Place"> | number
     longitude?: FloatFilter<"Place"> | number
+    disabled?: BoolFilter<"Place"> | boolean
+    validatedByWallet?: StringNullableFilter<"Place"> | string | null
+    validatorFetching?: BoolFilter<"Place"> | boolean
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
     airQuality?: AirQualityListRelationFilter
@@ -6143,10 +6011,12 @@ export namespace Prisma {
   export type PlaceOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    location?: SortOrder
+    placeName?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    disabled?: SortOrder
+    validatedByWallet?: SortOrderInput | SortOrder
+    validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     airQuality?: AirQualityOrderByRelationAggregateInput
@@ -6159,10 +6029,12 @@ export namespace Prisma {
     OR?: PlaceWhereInput[]
     NOT?: PlaceWhereInput | PlaceWhereInput[]
     userId?: StringFilter<"Place"> | string
-    name?: StringFilter<"Place"> | string
-    location?: StringFilter<"Place"> | string
+    placeName?: StringFilter<"Place"> | string
     latitude?: FloatFilter<"Place"> | number
     longitude?: FloatFilter<"Place"> | number
+    disabled?: BoolFilter<"Place"> | boolean
+    validatedByWallet?: StringNullableFilter<"Place"> | string | null
+    validatorFetching?: BoolFilter<"Place"> | boolean
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
     airQuality?: AirQualityListRelationFilter
@@ -6172,10 +6044,12 @@ export namespace Prisma {
   export type PlaceOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    location?: SortOrder
+    placeName?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    disabled?: SortOrder
+    validatedByWallet?: SortOrderInput | SortOrder
+    validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: PlaceCountOrderByAggregateInput
@@ -6191,10 +6065,12 @@ export namespace Prisma {
     NOT?: PlaceScalarWhereWithAggregatesInput | PlaceScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Place"> | string
     userId?: StringWithAggregatesFilter<"Place"> | string
-    name?: StringWithAggregatesFilter<"Place"> | string
-    location?: StringWithAggregatesFilter<"Place"> | string
+    placeName?: StringWithAggregatesFilter<"Place"> | string
     latitude?: FloatWithAggregatesFilter<"Place"> | number
     longitude?: FloatWithAggregatesFilter<"Place"> | number
+    disabled?: BoolWithAggregatesFilter<"Place"> | boolean
+    validatedByWallet?: StringNullableWithAggregatesFilter<"Place"> | string | null
+    validatorFetching?: BoolWithAggregatesFilter<"Place"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Place"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Place"> | Date | string
   }
@@ -6204,7 +6080,6 @@ export namespace Prisma {
     OR?: AirQualityWhereInput[]
     NOT?: AirQualityWhereInput | AirQualityWhereInput[]
     id?: StringFilter<"AirQuality"> | string
-    validatorId?: StringFilter<"AirQuality"> | string
     placeId?: StringFilter<"AirQuality"> | string
     createdAt?: DateTimeFilter<"AirQuality"> | Date | string
     updatedAt?: DateTimeFilter<"AirQuality"> | Date | string
@@ -6218,13 +6093,11 @@ export namespace Prisma {
     co?: FloatFilter<"AirQuality"> | number
     so2?: FloatFilter<"AirQuality"> | number
     no2?: FloatFilter<"AirQuality"> | number
-    validator?: XOR<ValidatorScalarRelationFilter, ValidatorWhereInput>
     place?: XOR<PlaceScalarRelationFilter, PlaceWhereInput>
   }
 
   export type AirQualityOrderByWithRelationInput = {
     id?: SortOrder
-    validatorId?: SortOrder
     placeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6238,7 +6111,6 @@ export namespace Prisma {
     co?: SortOrder
     so2?: SortOrder
     no2?: SortOrder
-    validator?: ValidatorOrderByWithRelationInput
     place?: PlaceOrderByWithRelationInput
   }
 
@@ -6247,7 +6119,6 @@ export namespace Prisma {
     AND?: AirQualityWhereInput | AirQualityWhereInput[]
     OR?: AirQualityWhereInput[]
     NOT?: AirQualityWhereInput | AirQualityWhereInput[]
-    validatorId?: StringFilter<"AirQuality"> | string
     placeId?: StringFilter<"AirQuality"> | string
     createdAt?: DateTimeFilter<"AirQuality"> | Date | string
     updatedAt?: DateTimeFilter<"AirQuality"> | Date | string
@@ -6261,13 +6132,11 @@ export namespace Prisma {
     co?: FloatFilter<"AirQuality"> | number
     so2?: FloatFilter<"AirQuality"> | number
     no2?: FloatFilter<"AirQuality"> | number
-    validator?: XOR<ValidatorScalarRelationFilter, ValidatorWhereInput>
     place?: XOR<PlaceScalarRelationFilter, PlaceWhereInput>
   }, "id">
 
   export type AirQualityOrderByWithAggregationInput = {
     id?: SortOrder
-    validatorId?: SortOrder
     placeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6293,7 +6162,6 @@ export namespace Prisma {
     OR?: AirQualityScalarWhereWithAggregatesInput[]
     NOT?: AirQualityScalarWhereWithAggregatesInput | AirQualityScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AirQuality"> | string
-    validatorId?: StringWithAggregatesFilter<"AirQuality"> | string
     placeId?: StringWithAggregatesFilter<"AirQuality"> | string
     createdAt?: DateTimeWithAggregatesFilter<"AirQuality"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"AirQuality"> | Date | string
@@ -6312,8 +6180,6 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     walletAddress: string
-    signature: string
-    signupMessage: string
     createdAt?: Date | string
     updatedAt?: Date | string
     placeId?: string | null
@@ -6323,8 +6189,6 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id?: string
     walletAddress: string
-    signature: string
-    signupMessage: string
     createdAt?: Date | string
     updatedAt?: Date | string
     placeId?: string | null
@@ -6334,8 +6198,6 @@ export namespace Prisma {
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
-    signature?: StringFieldUpdateOperationsInput | string
-    signupMessage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6345,8 +6207,6 @@ export namespace Prisma {
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
-    signature?: StringFieldUpdateOperationsInput | string
-    signupMessage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6356,8 +6216,6 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id?: string
     walletAddress: string
-    signature: string
-    signupMessage: string
     createdAt?: Date | string
     updatedAt?: Date | string
     placeId?: string | null
@@ -6366,8 +6224,6 @@ export namespace Prisma {
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
-    signature?: StringFieldUpdateOperationsInput | string
-    signupMessage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6376,8 +6232,6 @@ export namespace Prisma {
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
-    signature?: StringFieldUpdateOperationsInput | string
-    signupMessage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -6388,7 +6242,6 @@ export namespace Prisma {
     walletAddress: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    airQuality?: AirQualityCreateNestedManyWithoutValidatorInput
   }
 
   export type ValidatorUncheckedCreateInput = {
@@ -6396,7 +6249,6 @@ export namespace Prisma {
     walletAddress: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    airQuality?: AirQualityUncheckedCreateNestedManyWithoutValidatorInput
   }
 
   export type ValidatorUpdateInput = {
@@ -6404,7 +6256,6 @@ export namespace Prisma {
     walletAddress?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    airQuality?: AirQualityUpdateManyWithoutValidatorNestedInput
   }
 
   export type ValidatorUncheckedUpdateInput = {
@@ -6412,7 +6263,6 @@ export namespace Prisma {
     walletAddress?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    airQuality?: AirQualityUncheckedUpdateManyWithoutValidatorNestedInput
   }
 
   export type ValidatorCreateManyInput = {
@@ -6438,10 +6288,12 @@ export namespace Prisma {
 
   export type PlaceCreateInput = {
     id?: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     airQuality?: AirQualityCreateNestedManyWithoutPlaceInput
@@ -6451,10 +6303,12 @@ export namespace Prisma {
   export type PlaceUncheckedCreateInput = {
     id?: string
     userId: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     airQuality?: AirQualityUncheckedCreateNestedManyWithoutPlaceInput
@@ -6462,10 +6316,12 @@ export namespace Prisma {
 
   export type PlaceUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     airQuality?: AirQualityUpdateManyWithoutPlaceNestedInput
@@ -6475,10 +6331,12 @@ export namespace Prisma {
   export type PlaceUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     airQuality?: AirQualityUncheckedUpdateManyWithoutPlaceNestedInput
@@ -6487,20 +6345,24 @@ export namespace Prisma {
   export type PlaceCreateManyInput = {
     id?: string
     userId: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PlaceUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6508,10 +6370,12 @@ export namespace Prisma {
   export type PlaceUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6530,13 +6394,11 @@ export namespace Prisma {
     co: number
     so2: number
     no2: number
-    validator: ValidatorCreateNestedOneWithoutAirQualityInput
     place: PlaceCreateNestedOneWithoutAirQualityInput
   }
 
   export type AirQualityUncheckedCreateInput = {
     id?: string
-    validatorId: string
     placeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6566,13 +6428,11 @@ export namespace Prisma {
     co?: FloatFieldUpdateOperationsInput | number
     so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
-    validator?: ValidatorUpdateOneRequiredWithoutAirQualityNestedInput
     place?: PlaceUpdateOneRequiredWithoutAirQualityNestedInput
   }
 
   export type AirQualityUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    validatorId?: StringFieldUpdateOperationsInput | string
     placeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6590,7 +6450,6 @@ export namespace Prisma {
 
   export type AirQualityCreateManyInput = {
     id?: string
-    validatorId: string
     placeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6624,7 +6483,6 @@ export namespace Prisma {
 
   export type AirQualityUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    validatorId?: StringFieldUpdateOperationsInput | string
     placeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6699,8 +6557,6 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
-    signature?: SortOrder
-    signupMessage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     placeId?: SortOrder
@@ -6709,8 +6565,6 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
-    signature?: SortOrder
-    signupMessage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     placeId?: SortOrder
@@ -6719,8 +6573,6 @@ export namespace Prisma {
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
-    signature?: SortOrder
-    signupMessage?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     placeId?: SortOrder
@@ -6776,16 +6628,6 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
-  export type AirQualityListRelationFilter = {
-    every?: AirQualityWhereInput
-    some?: AirQualityWhereInput
-    none?: AirQualityWhereInput
-  }
-
-  export type AirQualityOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type ValidatorCountOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
@@ -6818,18 +6660,35 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type AirQualityListRelationFilter = {
+    every?: AirQualityWhereInput
+    some?: AirQualityWhereInput
+    none?: AirQualityWhereInput
+  }
+
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
 
+  export type AirQualityOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type PlaceCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    location?: SortOrder
+    placeName?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    disabled?: SortOrder
+    validatedByWallet?: SortOrder
+    validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6842,10 +6701,12 @@ export namespace Prisma {
   export type PlaceMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    location?: SortOrder
+    placeName?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    disabled?: SortOrder
+    validatedByWallet?: SortOrder
+    validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6853,10 +6714,12 @@ export namespace Prisma {
   export type PlaceMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    name?: SortOrder
-    location?: SortOrder
+    placeName?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
+    disabled?: SortOrder
+    validatedByWallet?: SortOrder
+    validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6882,6 +6745,14 @@ export namespace Prisma {
     _max?: NestedFloatFilter<$PrismaModel>
   }
 
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type EnumAirStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.AirStatus | EnumAirStatusFieldRefInput<$PrismaModel>
     in?: $Enums.AirStatus[] | ListEnumAirStatusFieldRefInput<$PrismaModel>
@@ -6900,11 +6771,6 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
-  export type ValidatorScalarRelationFilter = {
-    is?: ValidatorWhereInput
-    isNot?: ValidatorWhereInput
-  }
-
   export type PlaceScalarRelationFilter = {
     is?: PlaceWhereInput
     isNot?: PlaceWhereInput
@@ -6912,7 +6778,6 @@ export namespace Prisma {
 
   export type AirQualityCountOrderByAggregateInput = {
     id?: SortOrder
-    validatorId?: SortOrder
     placeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6942,7 +6807,6 @@ export namespace Prisma {
 
   export type AirQualityMaxOrderByAggregateInput = {
     id?: SortOrder
-    validatorId?: SortOrder
     placeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6960,7 +6824,6 @@ export namespace Prisma {
 
   export type AirQualityMinOrderByAggregateInput = {
     id?: SortOrder
-    validatorId?: SortOrder
     placeId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7068,48 +6931,6 @@ export namespace Prisma {
     deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
   }
 
-  export type AirQualityCreateNestedManyWithoutValidatorInput = {
-    create?: XOR<AirQualityCreateWithoutValidatorInput, AirQualityUncheckedCreateWithoutValidatorInput> | AirQualityCreateWithoutValidatorInput[] | AirQualityUncheckedCreateWithoutValidatorInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutValidatorInput | AirQualityCreateOrConnectWithoutValidatorInput[]
-    createMany?: AirQualityCreateManyValidatorInputEnvelope
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-  }
-
-  export type AirQualityUncheckedCreateNestedManyWithoutValidatorInput = {
-    create?: XOR<AirQualityCreateWithoutValidatorInput, AirQualityUncheckedCreateWithoutValidatorInput> | AirQualityCreateWithoutValidatorInput[] | AirQualityUncheckedCreateWithoutValidatorInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutValidatorInput | AirQualityCreateOrConnectWithoutValidatorInput[]
-    createMany?: AirQualityCreateManyValidatorInputEnvelope
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-  }
-
-  export type AirQualityUpdateManyWithoutValidatorNestedInput = {
-    create?: XOR<AirQualityCreateWithoutValidatorInput, AirQualityUncheckedCreateWithoutValidatorInput> | AirQualityCreateWithoutValidatorInput[] | AirQualityUncheckedCreateWithoutValidatorInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutValidatorInput | AirQualityCreateOrConnectWithoutValidatorInput[]
-    upsert?: AirQualityUpsertWithWhereUniqueWithoutValidatorInput | AirQualityUpsertWithWhereUniqueWithoutValidatorInput[]
-    createMany?: AirQualityCreateManyValidatorInputEnvelope
-    set?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    disconnect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    delete?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    update?: AirQualityUpdateWithWhereUniqueWithoutValidatorInput | AirQualityUpdateWithWhereUniqueWithoutValidatorInput[]
-    updateMany?: AirQualityUpdateManyWithWhereWithoutValidatorInput | AirQualityUpdateManyWithWhereWithoutValidatorInput[]
-    deleteMany?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
-  }
-
-  export type AirQualityUncheckedUpdateManyWithoutValidatorNestedInput = {
-    create?: XOR<AirQualityCreateWithoutValidatorInput, AirQualityUncheckedCreateWithoutValidatorInput> | AirQualityCreateWithoutValidatorInput[] | AirQualityUncheckedCreateWithoutValidatorInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutValidatorInput | AirQualityCreateOrConnectWithoutValidatorInput[]
-    upsert?: AirQualityUpsertWithWhereUniqueWithoutValidatorInput | AirQualityUpsertWithWhereUniqueWithoutValidatorInput[]
-    createMany?: AirQualityCreateManyValidatorInputEnvelope
-    set?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    disconnect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    delete?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    update?: AirQualityUpdateWithWhereUniqueWithoutValidatorInput | AirQualityUpdateWithWhereUniqueWithoutValidatorInput[]
-    updateMany?: AirQualityUpdateManyWithWhereWithoutValidatorInput | AirQualityUpdateManyWithWhereWithoutValidatorInput[]
-    deleteMany?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
-  }
-
   export type AirQualityCreateNestedManyWithoutPlaceInput = {
     create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput> | AirQualityCreateWithoutPlaceInput[] | AirQualityUncheckedCreateWithoutPlaceInput[]
     connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput | AirQualityCreateOrConnectWithoutPlaceInput[]
@@ -7136,6 +6957,10 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type AirQualityUpdateManyWithoutPlaceNestedInput = {
@@ -7174,12 +6999,6 @@ export namespace Prisma {
     deleteMany?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
   }
 
-  export type ValidatorCreateNestedOneWithoutAirQualityInput = {
-    create?: XOR<ValidatorCreateWithoutAirQualityInput, ValidatorUncheckedCreateWithoutAirQualityInput>
-    connectOrCreate?: ValidatorCreateOrConnectWithoutAirQualityInput
-    connect?: ValidatorWhereUniqueInput
-  }
-
   export type PlaceCreateNestedOneWithoutAirQualityInput = {
     create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
     connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput
@@ -7196,14 +7015,6 @@ export namespace Prisma {
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type ValidatorUpdateOneRequiredWithoutAirQualityNestedInput = {
-    create?: XOR<ValidatorCreateWithoutAirQualityInput, ValidatorUncheckedCreateWithoutAirQualityInput>
-    connectOrCreate?: ValidatorCreateOrConnectWithoutAirQualityInput
-    upsert?: ValidatorUpsertWithoutAirQualityInput
-    connect?: ValidatorWhereUniqueInput
-    update?: XOR<XOR<ValidatorUpdateToOneWithWhereWithoutAirQualityInput, ValidatorUpdateWithoutAirQualityInput>, ValidatorUncheckedUpdateWithoutAirQualityInput>
   }
 
   export type PlaceUpdateOneRequiredWithoutAirQualityNestedInput = {
@@ -7334,6 +7145,11 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -7348,6 +7164,14 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NestedEnumAirStatusFilter<$PrismaModel = never> = {
@@ -7385,10 +7209,12 @@ export namespace Prisma {
 
   export type PlaceCreateWithoutUserInput = {
     id?: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     airQuality?: AirQualityCreateNestedManyWithoutPlaceInput
@@ -7396,10 +7222,12 @@ export namespace Prisma {
 
   export type PlaceUncheckedCreateWithoutUserInput = {
     id?: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     airQuality?: AirQualityUncheckedCreateNestedManyWithoutPlaceInput
@@ -7437,93 +7265,14 @@ export namespace Prisma {
     NOT?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
     id?: StringFilter<"Place"> | string
     userId?: StringFilter<"Place"> | string
-    name?: StringFilter<"Place"> | string
-    location?: StringFilter<"Place"> | string
+    placeName?: StringFilter<"Place"> | string
     latitude?: FloatFilter<"Place"> | number
     longitude?: FloatFilter<"Place"> | number
+    disabled?: BoolFilter<"Place"> | boolean
+    validatedByWallet?: StringNullableFilter<"Place"> | string | null
+    validatorFetching?: BoolFilter<"Place"> | boolean
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
-  }
-
-  export type AirQualityCreateWithoutValidatorInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: $Enums.AirStatus
-    aqi: number
-    pm25: number
-    no: number
-    o3: number
-    nh3: number
-    pm10: number
-    co: number
-    so2: number
-    no2: number
-    place: PlaceCreateNestedOneWithoutAirQualityInput
-  }
-
-  export type AirQualityUncheckedCreateWithoutValidatorInput = {
-    id?: string
-    placeId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: $Enums.AirStatus
-    aqi: number
-    pm25: number
-    no: number
-    o3: number
-    nh3: number
-    pm10: number
-    co: number
-    so2: number
-    no2: number
-  }
-
-  export type AirQualityCreateOrConnectWithoutValidatorInput = {
-    where: AirQualityWhereUniqueInput
-    create: XOR<AirQualityCreateWithoutValidatorInput, AirQualityUncheckedCreateWithoutValidatorInput>
-  }
-
-  export type AirQualityCreateManyValidatorInputEnvelope = {
-    data: AirQualityCreateManyValidatorInput | AirQualityCreateManyValidatorInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type AirQualityUpsertWithWhereUniqueWithoutValidatorInput = {
-    where: AirQualityWhereUniqueInput
-    update: XOR<AirQualityUpdateWithoutValidatorInput, AirQualityUncheckedUpdateWithoutValidatorInput>
-    create: XOR<AirQualityCreateWithoutValidatorInput, AirQualityUncheckedCreateWithoutValidatorInput>
-  }
-
-  export type AirQualityUpdateWithWhereUniqueWithoutValidatorInput = {
-    where: AirQualityWhereUniqueInput
-    data: XOR<AirQualityUpdateWithoutValidatorInput, AirQualityUncheckedUpdateWithoutValidatorInput>
-  }
-
-  export type AirQualityUpdateManyWithWhereWithoutValidatorInput = {
-    where: AirQualityScalarWhereInput
-    data: XOR<AirQualityUpdateManyMutationInput, AirQualityUncheckedUpdateManyWithoutValidatorInput>
-  }
-
-  export type AirQualityScalarWhereInput = {
-    AND?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
-    OR?: AirQualityScalarWhereInput[]
-    NOT?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
-    id?: StringFilter<"AirQuality"> | string
-    validatorId?: StringFilter<"AirQuality"> | string
-    placeId?: StringFilter<"AirQuality"> | string
-    createdAt?: DateTimeFilter<"AirQuality"> | Date | string
-    updatedAt?: DateTimeFilter<"AirQuality"> | Date | string
-    status?: EnumAirStatusFilter<"AirQuality"> | $Enums.AirStatus
-    aqi?: IntFilter<"AirQuality"> | number
-    pm25?: FloatFilter<"AirQuality"> | number
-    no?: FloatFilter<"AirQuality"> | number
-    o3?: FloatFilter<"AirQuality"> | number
-    nh3?: FloatFilter<"AirQuality"> | number
-    pm10?: FloatFilter<"AirQuality"> | number
-    co?: FloatFilter<"AirQuality"> | number
-    so2?: FloatFilter<"AirQuality"> | number
-    no2?: FloatFilter<"AirQuality"> | number
   }
 
   export type AirQualityCreateWithoutPlaceInput = {
@@ -7540,12 +7289,10 @@ export namespace Prisma {
     co: number
     so2: number
     no2: number
-    validator: ValidatorCreateNestedOneWithoutAirQualityInput
   }
 
   export type AirQualityUncheckedCreateWithoutPlaceInput = {
     id?: string
-    validatorId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     status: $Enums.AirStatus
@@ -7573,8 +7320,6 @@ export namespace Prisma {
   export type UserCreateWithoutPlaceInput = {
     id?: string
     walletAddress: string
-    signature: string
-    signupMessage: string
     createdAt?: Date | string
     updatedAt?: Date | string
     placeId?: string | null
@@ -7583,8 +7328,6 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutPlaceInput = {
     id?: string
     walletAddress: string
-    signature: string
-    signupMessage: string
     createdAt?: Date | string
     updatedAt?: Date | string
     placeId?: string | null
@@ -7611,6 +7354,26 @@ export namespace Prisma {
     data: XOR<AirQualityUpdateManyMutationInput, AirQualityUncheckedUpdateManyWithoutPlaceInput>
   }
 
+  export type AirQualityScalarWhereInput = {
+    AND?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
+    OR?: AirQualityScalarWhereInput[]
+    NOT?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
+    id?: StringFilter<"AirQuality"> | string
+    placeId?: StringFilter<"AirQuality"> | string
+    createdAt?: DateTimeFilter<"AirQuality"> | Date | string
+    updatedAt?: DateTimeFilter<"AirQuality"> | Date | string
+    status?: EnumAirStatusFilter<"AirQuality"> | $Enums.AirStatus
+    aqi?: IntFilter<"AirQuality"> | number
+    pm25?: FloatFilter<"AirQuality"> | number
+    no?: FloatFilter<"AirQuality"> | number
+    o3?: FloatFilter<"AirQuality"> | number
+    nh3?: FloatFilter<"AirQuality"> | number
+    pm10?: FloatFilter<"AirQuality"> | number
+    co?: FloatFilter<"AirQuality"> | number
+    so2?: FloatFilter<"AirQuality"> | number
+    no2?: FloatFilter<"AirQuality"> | number
+  }
+
   export type UserUpsertWithoutPlaceInput = {
     update: XOR<UserUpdateWithoutPlaceInput, UserUncheckedUpdateWithoutPlaceInput>
     create: XOR<UserCreateWithoutPlaceInput, UserUncheckedCreateWithoutPlaceInput>
@@ -7625,8 +7388,6 @@ export namespace Prisma {
   export type UserUpdateWithoutPlaceInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
-    signature?: StringFieldUpdateOperationsInput | string
-    signupMessage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -7635,38 +7396,19 @@ export namespace Prisma {
   export type UserUncheckedUpdateWithoutPlaceInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
-    signature?: StringFieldUpdateOperationsInput | string
-    signupMessage?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     placeId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type ValidatorCreateWithoutAirQualityInput = {
-    id?: string
-    walletAddress: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ValidatorUncheckedCreateWithoutAirQualityInput = {
-    id?: string
-    walletAddress: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ValidatorCreateOrConnectWithoutAirQualityInput = {
-    where: ValidatorWhereUniqueInput
-    create: XOR<ValidatorCreateWithoutAirQualityInput, ValidatorUncheckedCreateWithoutAirQualityInput>
-  }
-
   export type PlaceCreateWithoutAirQualityInput = {
     id?: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutPlaceInput
@@ -7675,10 +7417,12 @@ export namespace Prisma {
   export type PlaceUncheckedCreateWithoutAirQualityInput = {
     id?: string
     userId: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7686,31 +7430,6 @@ export namespace Prisma {
   export type PlaceCreateOrConnectWithoutAirQualityInput = {
     where: PlaceWhereUniqueInput
     create: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
-  }
-
-  export type ValidatorUpsertWithoutAirQualityInput = {
-    update: XOR<ValidatorUpdateWithoutAirQualityInput, ValidatorUncheckedUpdateWithoutAirQualityInput>
-    create: XOR<ValidatorCreateWithoutAirQualityInput, ValidatorUncheckedCreateWithoutAirQualityInput>
-    where?: ValidatorWhereInput
-  }
-
-  export type ValidatorUpdateToOneWithWhereWithoutAirQualityInput = {
-    where?: ValidatorWhereInput
-    data: XOR<ValidatorUpdateWithoutAirQualityInput, ValidatorUncheckedUpdateWithoutAirQualityInput>
-  }
-
-  export type ValidatorUpdateWithoutAirQualityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ValidatorUncheckedUpdateWithoutAirQualityInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlaceUpsertWithoutAirQualityInput = {
@@ -7726,10 +7445,12 @@ export namespace Prisma {
 
   export type PlaceUpdateWithoutAirQualityInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutPlaceNestedInput
@@ -7738,30 +7459,36 @@ export namespace Prisma {
   export type PlaceUncheckedUpdateWithoutAirQualityInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PlaceCreateManyUserInput = {
     id?: string
-    name: string
-    location: string
+    placeName: string
     latitude: number
     longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
   export type PlaceUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     airQuality?: AirQualityUpdateManyWithoutPlaceNestedInput
@@ -7769,10 +7496,12 @@ export namespace Prisma {
 
   export type PlaceUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     airQuality?: AirQualityUncheckedUpdateManyWithoutPlaceNestedInput
@@ -7780,85 +7509,18 @@ export namespace Prisma {
 
   export type PlaceUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    location?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AirQualityCreateManyValidatorInput = {
-    id?: string
-    placeId: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: $Enums.AirStatus
-    aqi: number
-    pm25: number
-    no: number
-    o3: number
-    nh3: number
-    pm10: number
-    co: number
-    so2: number
-    no2: number
-  }
-
-  export type AirQualityUpdateWithoutValidatorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
-    aqi?: IntFieldUpdateOperationsInput | number
-    pm25?: FloatFieldUpdateOperationsInput | number
-    no?: FloatFieldUpdateOperationsInput | number
-    o3?: FloatFieldUpdateOperationsInput | number
-    nh3?: FloatFieldUpdateOperationsInput | number
-    pm10?: FloatFieldUpdateOperationsInput | number
-    co?: FloatFieldUpdateOperationsInput | number
-    so2?: FloatFieldUpdateOperationsInput | number
-    no2?: FloatFieldUpdateOperationsInput | number
-    place?: PlaceUpdateOneRequiredWithoutAirQualityNestedInput
-  }
-
-  export type AirQualityUncheckedUpdateWithoutValidatorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    placeId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
-    aqi?: IntFieldUpdateOperationsInput | number
-    pm25?: FloatFieldUpdateOperationsInput | number
-    no?: FloatFieldUpdateOperationsInput | number
-    o3?: FloatFieldUpdateOperationsInput | number
-    nh3?: FloatFieldUpdateOperationsInput | number
-    pm10?: FloatFieldUpdateOperationsInput | number
-    co?: FloatFieldUpdateOperationsInput | number
-    so2?: FloatFieldUpdateOperationsInput | number
-    no2?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type AirQualityUncheckedUpdateManyWithoutValidatorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    placeId?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
-    aqi?: IntFieldUpdateOperationsInput | number
-    pm25?: FloatFieldUpdateOperationsInput | number
-    no?: FloatFieldUpdateOperationsInput | number
-    o3?: FloatFieldUpdateOperationsInput | number
-    nh3?: FloatFieldUpdateOperationsInput | number
-    pm10?: FloatFieldUpdateOperationsInput | number
-    co?: FloatFieldUpdateOperationsInput | number
-    so2?: FloatFieldUpdateOperationsInput | number
-    no2?: FloatFieldUpdateOperationsInput | number
   }
 
   export type AirQualityCreateManyPlaceInput = {
     id?: string
-    validatorId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     status: $Enums.AirStatus
@@ -7887,12 +7549,10 @@ export namespace Prisma {
     co?: FloatFieldUpdateOperationsInput | number
     so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
-    validator?: ValidatorUpdateOneRequiredWithoutAirQualityNestedInput
   }
 
   export type AirQualityUncheckedUpdateWithoutPlaceInput = {
     id?: StringFieldUpdateOperationsInput | string
-    validatorId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
@@ -7909,7 +7569,6 @@ export namespace Prisma {
 
   export type AirQualityUncheckedUpdateManyWithoutPlaceInput = {
     id?: StringFieldUpdateOperationsInput | string
-    validatorId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
