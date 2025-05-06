@@ -131,6 +131,7 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.ValidatorScalarFieldEnum = {
   id: 'id',
   walletAddress: 'walletAddress',
+  pendingPayouts: 'pendingPayouts',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -184,8 +185,7 @@ exports.AirStatus = exports.$Enums.AirStatus = {
   MODERATE: 'MODERATE',
   UNHEALTHY: 'UNHEALTHY',
   VERY_UNHEALTHY: 'VERY_UNHEALTHY',
-  SEVERE: 'SEVERE',
-  CRITICAL: 'CRITICAL'
+  SEVERE: 'SEVERE'
 };
 
 exports.Prisma.ModelName = {

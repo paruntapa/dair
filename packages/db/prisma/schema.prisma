@@ -24,11 +24,11 @@ model User {
 }
 
 model Validator {
-  id            String   @id @default(uuid())
-  walletAddress String   @unique
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-
+  id              String   @id @default(uuid())
+  walletAddress   String   @unique
+  pendingPayouts  Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model Place {
@@ -70,5 +70,4 @@ enum AirStatus {
   UNHEALTHY
   VERY_UNHEALTHY
   SEVERE
-  CRITICAL
 }

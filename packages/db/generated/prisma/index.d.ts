@@ -43,8 +43,7 @@ export namespace $Enums {
   MODERATE: 'MODERATE',
   UNHEALTHY: 'UNHEALTHY',
   VERY_UNHEALTHY: 'VERY_UNHEALTHY',
-  SEVERE: 'SEVERE',
-  CRITICAL: 'CRITICAL'
+  SEVERE: 'SEVERE'
 };
 
 export type AirStatus = (typeof AirStatus)[keyof typeof AirStatus]
@@ -2300,13 +2299,24 @@ export namespace Prisma {
 
   export type AggregateValidator = {
     _count: ValidatorCountAggregateOutputType | null
+    _avg: ValidatorAvgAggregateOutputType | null
+    _sum: ValidatorSumAggregateOutputType | null
     _min: ValidatorMinAggregateOutputType | null
     _max: ValidatorMaxAggregateOutputType | null
+  }
+
+  export type ValidatorAvgAggregateOutputType = {
+    pendingPayouts: number | null
+  }
+
+  export type ValidatorSumAggregateOutputType = {
+    pendingPayouts: number | null
   }
 
   export type ValidatorMinAggregateOutputType = {
     id: string | null
     walletAddress: string | null
+    pendingPayouts: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2314,6 +2324,7 @@ export namespace Prisma {
   export type ValidatorMaxAggregateOutputType = {
     id: string | null
     walletAddress: string | null
+    pendingPayouts: number | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -2321,15 +2332,25 @@ export namespace Prisma {
   export type ValidatorCountAggregateOutputType = {
     id: number
     walletAddress: number
+    pendingPayouts: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type ValidatorAvgAggregateInputType = {
+    pendingPayouts?: true
+  }
+
+  export type ValidatorSumAggregateInputType = {
+    pendingPayouts?: true
+  }
+
   export type ValidatorMinAggregateInputType = {
     id?: true
     walletAddress?: true
+    pendingPayouts?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2337,6 +2358,7 @@ export namespace Prisma {
   export type ValidatorMaxAggregateInputType = {
     id?: true
     walletAddress?: true
+    pendingPayouts?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -2344,6 +2366,7 @@ export namespace Prisma {
   export type ValidatorCountAggregateInputType = {
     id?: true
     walletAddress?: true
+    pendingPayouts?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -2387,6 +2410,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ValidatorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ValidatorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ValidatorMinAggregateInputType
@@ -2417,6 +2452,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ValidatorCountAggregateInputType | true
+    _avg?: ValidatorAvgAggregateInputType
+    _sum?: ValidatorSumAggregateInputType
     _min?: ValidatorMinAggregateInputType
     _max?: ValidatorMaxAggregateInputType
   }
@@ -2424,9 +2461,12 @@ export namespace Prisma {
   export type ValidatorGroupByOutputType = {
     id: string
     walletAddress: string
+    pendingPayouts: number
     createdAt: Date
     updatedAt: Date
     _count: ValidatorCountAggregateOutputType | null
+    _avg: ValidatorAvgAggregateOutputType | null
+    _sum: ValidatorSumAggregateOutputType | null
     _min: ValidatorMinAggregateOutputType | null
     _max: ValidatorMaxAggregateOutputType | null
   }
@@ -2448,6 +2488,7 @@ export namespace Prisma {
   export type ValidatorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walletAddress?: boolean
+    pendingPayouts?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["validator"]>
@@ -2455,6 +2496,7 @@ export namespace Prisma {
   export type ValidatorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walletAddress?: boolean
+    pendingPayouts?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["validator"]>
@@ -2462,6 +2504,7 @@ export namespace Prisma {
   export type ValidatorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walletAddress?: boolean
+    pendingPayouts?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["validator"]>
@@ -2469,11 +2512,12 @@ export namespace Prisma {
   export type ValidatorSelectScalar = {
     id?: boolean
     walletAddress?: boolean
+    pendingPayouts?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ValidatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "createdAt" | "updatedAt", ExtArgs["result"]["validator"]>
+  export type ValidatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "pendingPayouts" | "createdAt" | "updatedAt", ExtArgs["result"]["validator"]>
 
   export type $ValidatorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Validator"
@@ -2481,6 +2525,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       walletAddress: string
+      pendingPayouts: number
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["validator"]>
@@ -2908,6 +2953,7 @@ export namespace Prisma {
   interface ValidatorFieldRefs {
     readonly id: FieldRef<"Validator", 'String'>
     readonly walletAddress: FieldRef<"Validator", 'String'>
+    readonly pendingPayouts: FieldRef<"Validator", 'Int'>
     readonly createdAt: FieldRef<"Validator", 'DateTime'>
     readonly updatedAt: FieldRef<"Validator", 'DateTime'>
   }
@@ -5736,6 +5782,7 @@ export namespace Prisma {
   export const ValidatorScalarFieldEnum: {
     id: 'id',
     walletAddress: 'walletAddress',
+    pendingPayouts: 'pendingPayouts',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -5837,6 +5884,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -5868,20 +5929,6 @@ export namespace Prisma {
    * Reference to a field of type 'AirStatus[]'
    */
   export type ListEnumAirStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AirStatus[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
@@ -5949,6 +5996,7 @@ export namespace Prisma {
     NOT?: ValidatorWhereInput | ValidatorWhereInput[]
     id?: StringFilter<"Validator"> | string
     walletAddress?: StringFilter<"Validator"> | string
+    pendingPayouts?: IntFilter<"Validator"> | number
     createdAt?: DateTimeFilter<"Validator"> | Date | string
     updatedAt?: DateTimeFilter<"Validator"> | Date | string
   }
@@ -5956,6 +6004,7 @@ export namespace Prisma {
   export type ValidatorOrderByWithRelationInput = {
     id?: SortOrder
     walletAddress?: SortOrder
+    pendingPayouts?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -5966,6 +6015,7 @@ export namespace Prisma {
     AND?: ValidatorWhereInput | ValidatorWhereInput[]
     OR?: ValidatorWhereInput[]
     NOT?: ValidatorWhereInput | ValidatorWhereInput[]
+    pendingPayouts?: IntFilter<"Validator"> | number
     createdAt?: DateTimeFilter<"Validator"> | Date | string
     updatedAt?: DateTimeFilter<"Validator"> | Date | string
   }, "id" | "walletAddress">
@@ -5973,11 +6023,14 @@ export namespace Prisma {
   export type ValidatorOrderByWithAggregationInput = {
     id?: SortOrder
     walletAddress?: SortOrder
+    pendingPayouts?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ValidatorCountOrderByAggregateInput
+    _avg?: ValidatorAvgOrderByAggregateInput
     _max?: ValidatorMaxOrderByAggregateInput
     _min?: ValidatorMinOrderByAggregateInput
+    _sum?: ValidatorSumOrderByAggregateInput
   }
 
   export type ValidatorScalarWhereWithAggregatesInput = {
@@ -5986,6 +6039,7 @@ export namespace Prisma {
     NOT?: ValidatorScalarWhereWithAggregatesInput | ValidatorScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Validator"> | string
     walletAddress?: StringWithAggregatesFilter<"Validator"> | string
+    pendingPayouts?: IntWithAggregatesFilter<"Validator"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Validator"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Validator"> | Date | string
   }
@@ -6240,6 +6294,7 @@ export namespace Prisma {
   export type ValidatorCreateInput = {
     id?: string
     walletAddress: string
+    pendingPayouts?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6247,6 +6302,7 @@ export namespace Prisma {
   export type ValidatorUncheckedCreateInput = {
     id?: string
     walletAddress: string
+    pendingPayouts?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6254,6 +6310,7 @@ export namespace Prisma {
   export type ValidatorUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouts?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6261,6 +6318,7 @@ export namespace Prisma {
   export type ValidatorUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouts?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6268,6 +6326,7 @@ export namespace Prisma {
   export type ValidatorCreateManyInput = {
     id?: string
     walletAddress: string
+    pendingPayouts?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6275,6 +6334,7 @@ export namespace Prisma {
   export type ValidatorUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouts?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6282,6 +6342,7 @@ export namespace Prisma {
   export type ValidatorUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     walletAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouts?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -6628,16 +6689,33 @@ export namespace Prisma {
     _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type ValidatorCountOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
+    pendingPayouts?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ValidatorAvgOrderByAggregateInput = {
+    pendingPayouts?: SortOrder
   }
 
   export type ValidatorMaxOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
+    pendingPayouts?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -6645,8 +6723,29 @@ export namespace Prisma {
   export type ValidatorMinOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
+    pendingPayouts?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type ValidatorSumOrderByAggregateInput = {
+    pendingPayouts?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -6760,17 +6859,6 @@ export namespace Prisma {
     not?: NestedEnumAirStatusFilter<$PrismaModel> | $Enums.AirStatus
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type PlaceScalarRelationFilter = {
     is?: PlaceWhereInput
     isNot?: PlaceWhereInput
@@ -6861,22 +6949,6 @@ export namespace Prisma {
     _max?: NestedEnumAirStatusFilter<$PrismaModel>
   }
 
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
   export type PlaceCreateNestedManyWithoutUserInput = {
     create?: XOR<PlaceCreateWithoutUserInput, PlaceUncheckedCreateWithoutUserInput> | PlaceCreateWithoutUserInput[] | PlaceUncheckedCreateWithoutUserInput[]
     connectOrCreate?: PlaceCreateOrConnectWithoutUserInput | PlaceCreateOrConnectWithoutUserInput[]
@@ -6929,6 +7001,14 @@ export namespace Prisma {
     update?: PlaceUpdateWithWhereUniqueWithoutUserInput | PlaceUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: PlaceUpdateManyWithWhereWithoutUserInput | PlaceUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type AirQualityCreateNestedManyWithoutPlaceInput = {
@@ -7007,14 +7087,6 @@ export namespace Prisma {
 
   export type EnumAirStatusFieldUpdateOperationsInput = {
     set?: $Enums.AirStatus
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type PlaceUpdateOneRequiredWithoutAirQualityNestedInput = {
@@ -7134,6 +7206,22 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -7189,22 +7277,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumAirStatusFilter<$PrismaModel>
     _max?: NestedEnumAirStatusFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type PlaceCreateWithoutUserInput = {
