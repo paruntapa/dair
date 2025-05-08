@@ -1,9 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ProtectedRoute } from '../../components/ProtectedRoute';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 const ValidatorPage = () => {
+
   return (
     <ProtectedRoute>
       <div className="container mx-auto px-4 py-8">

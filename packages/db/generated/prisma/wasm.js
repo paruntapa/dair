@@ -146,7 +146,8 @@ exports.Prisma.PlaceScalarFieldEnum = {
   validatedByWallet: 'validatedByWallet',
   validatorFetching: 'validatorFetching',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  airQualityId: 'airQualityId'
 };
 
 exports.Prisma.AirQualityScalarFieldEnum = {

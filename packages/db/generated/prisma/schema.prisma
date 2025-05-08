@@ -32,24 +32,25 @@ model Validator {
 }
 
 model Place {
-  id                String       @id @default(uuid())
+  id                String      @id @default(uuid())
   userId            String
   placeName         String
   latitude          Float
   longitude         Float
-  disabled          Boolean      @default(false)
+  disabled          Boolean     @default(false)
   validatedByWallet String?
-  validatorFetching Boolean      @default(false)
-  createdAt         DateTime     @default(now())
-  updatedAt         DateTime     @updatedAt
-  airQuality        AirQuality[]
-  user              User         @relation(fields: [userId], references: [id])
+  validatorFetching Boolean     @default(false)
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+  airQualityId      String?
+  airQuality        AirQuality? @relation(fields: [airQualityId], references: [id])
+  user              User        @relation(fields: [userId], references: [id])
 }
 
 model AirQuality {
   id        String    @id @default(uuid())
   placeId   String
-  place     Place     @relation(fields: [placeId], references: [id])
+  place     Place[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   status    AirStatus

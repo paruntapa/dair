@@ -13,7 +13,7 @@ const AppBar = () => {
   const router = useRouter();
 
   async function authenticate() {
-    if (!publicKey || isAuthenticated) {
+    if (!publicKey || isAuthenticated || localStorage.getItem("token")) {
         return;
     }
 
@@ -40,6 +40,8 @@ const AppBar = () => {
   useEffect(() => {
     if (publicKey && !isAuthenticated) {
       authenticate();
+      router.refresh();
+
     }
   }, [publicKey, isAuthenticated]);
   

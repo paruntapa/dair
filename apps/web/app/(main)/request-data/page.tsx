@@ -8,6 +8,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 
 const RequestDataPage = () => {
   const { publicKey } = useWallet();
+  const [token, setToken] = useState<string | null>(null);
   const [airQualityData, setAirQualityData] = useState<AirQualityData[] | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -23,7 +24,7 @@ const RequestDataPage = () => {
       
       setIsLoading(true);
       try {
-        const token = localStorage.getItem('token');
+        setToken(localStorage.getItem('token') || null);
         if (!token) {
           setIsLoading(false);
           return;
@@ -45,6 +46,7 @@ const RequestDataPage = () => {
           const places = response.data.places.map((place: any) => {
             // Extract airQuality info if it exists
             const airQuality = place.airQuality || {};
+            console.log("airQuality", airQuality);
             
             return {
               id: place.id || `place-${Math.random().toString(36).substr(2, 9)}`,
@@ -77,7 +79,7 @@ const RequestDataPage = () => {
     };
 
     fetchUserPlaces();
-  }, [publicKey]);
+  }, [publicKey, token]);
 
   const handleRequestData = async () => {
     // Validate place name is provided
@@ -128,7 +130,7 @@ const RequestDataPage = () => {
 
       // Make API request to create a new place
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/place/create`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/place/create`,
         requestData,
         {
           headers: {
@@ -147,7 +149,7 @@ const RequestDataPage = () => {
       // Refresh the places list
       setIsLoading(true);
       const refreshResponse = await axios.get(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/v1/air-quality`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/v1/air-quality`,
         {
           headers: {
             Authorization: `Bearer ${token}`

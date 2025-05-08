@@ -1189,33 +1189,33 @@ export namespace Prisma {
 
 
   /**
-   * Count Type PlaceCountOutputType
+   * Count Type AirQualityCountOutputType
    */
 
-  export type PlaceCountOutputType = {
-    airQuality: number
+  export type AirQualityCountOutputType = {
+    place: number
   }
 
-  export type PlaceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    airQuality?: boolean | PlaceCountOutputTypeCountAirQualityArgs
+  export type AirQualityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    place?: boolean | AirQualityCountOutputTypeCountPlaceArgs
   }
 
   // Custom InputTypes
   /**
-   * PlaceCountOutputType without action
+   * AirQualityCountOutputType without action
    */
-  export type PlaceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type AirQualityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the PlaceCountOutputType
+     * Select specific fields to fetch from the AirQualityCountOutputType
      */
-    select?: PlaceCountOutputTypeSelect<ExtArgs> | null
+    select?: AirQualityCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * PlaceCountOutputType without action
+   * AirQualityCountOutputType without action
    */
-  export type PlaceCountOutputTypeCountAirQualityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AirQualityWhereInput
+  export type AirQualityCountOutputTypeCountPlaceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PlaceWhereInput
   }
 
 
@@ -3355,6 +3355,7 @@ export namespace Prisma {
     validatorFetching: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    airQualityId: string | null
   }
 
   export type PlaceMaxAggregateOutputType = {
@@ -3368,6 +3369,7 @@ export namespace Prisma {
     validatorFetching: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    airQualityId: string | null
   }
 
   export type PlaceCountAggregateOutputType = {
@@ -3381,6 +3383,7 @@ export namespace Prisma {
     validatorFetching: number
     createdAt: number
     updatedAt: number
+    airQualityId: number
     _all: number
   }
 
@@ -3406,6 +3409,7 @@ export namespace Prisma {
     validatorFetching?: true
     createdAt?: true
     updatedAt?: true
+    airQualityId?: true
   }
 
   export type PlaceMaxAggregateInputType = {
@@ -3419,6 +3423,7 @@ export namespace Prisma {
     validatorFetching?: true
     createdAt?: true
     updatedAt?: true
+    airQualityId?: true
   }
 
   export type PlaceCountAggregateInputType = {
@@ -3432,6 +3437,7 @@ export namespace Prisma {
     validatorFetching?: true
     createdAt?: true
     updatedAt?: true
+    airQualityId?: true
     _all?: true
   }
 
@@ -3532,6 +3538,7 @@ export namespace Prisma {
     validatorFetching: boolean
     createdAt: Date
     updatedAt: Date
+    airQualityId: string | null
     _count: PlaceCountAggregateOutputType | null
     _avg: PlaceAvgAggregateOutputType | null
     _sum: PlaceSumAggregateOutputType | null
@@ -3564,9 +3571,9 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    airQualityId?: boolean
     airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    _count?: boolean | PlaceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["place"]>
 
   export type PlaceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3580,6 +3587,8 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    airQualityId?: boolean
+    airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["place"]>
 
@@ -3594,6 +3603,8 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    airQualityId?: boolean
+    airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["place"]>
 
@@ -3608,25 +3619,27 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    airQualityId?: boolean
   }
 
-  export type PlaceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "placeName" | "latitude" | "longitude" | "disabled" | "validatedByWallet" | "validatorFetching" | "createdAt" | "updatedAt", ExtArgs["result"]["place"]>
+  export type PlaceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "placeName" | "latitude" | "longitude" | "disabled" | "validatedByWallet" | "validatorFetching" | "createdAt" | "updatedAt" | "airQualityId", ExtArgs["result"]["place"]>
   export type PlaceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    _count?: boolean | PlaceCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type PlaceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type PlaceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    airQuality?: boolean | Place$airQualityArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $PlacePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Place"
     objects: {
-      airQuality: Prisma.$AirQualityPayload<ExtArgs>[]
+      airQuality: Prisma.$AirQualityPayload<ExtArgs> | null
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -3640,6 +3653,7 @@ export namespace Prisma {
       validatorFetching: boolean
       createdAt: Date
       updatedAt: Date
+      airQualityId: string | null
     }, ExtArgs["result"]["place"]>
     composites: {}
   }
@@ -4034,7 +4048,7 @@ export namespace Prisma {
    */
   export interface Prisma__PlaceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    airQuality<T extends Place$airQualityArgs<ExtArgs> = {}>(args?: Subset<T, Place$airQualityArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirQualityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    airQuality<T extends Place$airQualityArgs<ExtArgs> = {}>(args?: Subset<T, Place$airQualityArgs<ExtArgs>>): Prisma__AirQualityClient<$Result.GetResult<Prisma.$AirQualityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -4075,6 +4089,7 @@ export namespace Prisma {
     readonly validatorFetching: FieldRef<"Place", 'Boolean'>
     readonly createdAt: FieldRef<"Place", 'DateTime'>
     readonly updatedAt: FieldRef<"Place", 'DateTime'>
+    readonly airQualityId: FieldRef<"Place", 'String'>
   }
     
 
@@ -4487,11 +4502,6 @@ export namespace Prisma {
      */
     include?: AirQualityInclude<ExtArgs> | null
     where?: AirQualityWhereInput
-    orderBy?: AirQualityOrderByWithRelationInput | AirQualityOrderByWithRelationInput[]
-    cursor?: AirQualityWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: AirQualityScalarFieldEnum | AirQualityScalarFieldEnum[]
   }
 
   /**
@@ -4815,7 +4825,8 @@ export namespace Prisma {
     co?: boolean
     so2?: boolean
     no2?: boolean
-    place?: boolean | PlaceDefaultArgs<ExtArgs>
+    place?: boolean | AirQuality$placeArgs<ExtArgs>
+    _count?: boolean | AirQualityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airQuality"]>
 
   export type AirQualitySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4833,7 +4844,6 @@ export namespace Prisma {
     co?: boolean
     so2?: boolean
     no2?: boolean
-    place?: boolean | PlaceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airQuality"]>
 
   export type AirQualitySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4851,7 +4861,6 @@ export namespace Prisma {
     co?: boolean
     so2?: boolean
     no2?: boolean
-    place?: boolean | PlaceDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airQuality"]>
 
   export type AirQualitySelectScalar = {
@@ -4873,19 +4882,16 @@ export namespace Prisma {
 
   export type AirQualityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "placeId" | "createdAt" | "updatedAt" | "status" | "aqi" | "pm25" | "no" | "o3" | "nh3" | "pm10" | "co" | "so2" | "no2", ExtArgs["result"]["airQuality"]>
   export type AirQualityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    place?: boolean | PlaceDefaultArgs<ExtArgs>
+    place?: boolean | AirQuality$placeArgs<ExtArgs>
+    _count?: boolean | AirQualityCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AirQualityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    place?: boolean | PlaceDefaultArgs<ExtArgs>
-  }
-  export type AirQualityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    place?: boolean | PlaceDefaultArgs<ExtArgs>
-  }
+  export type AirQualityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AirQualityIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $AirQualityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AirQuality"
     objects: {
-      place: Prisma.$PlacePayload<ExtArgs>
+      place: Prisma.$PlacePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5296,7 +5302,7 @@ export namespace Prisma {
    */
   export interface Prisma__AirQualityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    place<T extends PlaceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PlaceDefaultArgs<ExtArgs>>): Prisma__PlaceClient<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    place<T extends AirQuality$placeArgs<ExtArgs> = {}>(args?: Subset<T, AirQuality$placeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlacePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5589,10 +5595,6 @@ export namespace Prisma {
      */
     data: AirQualityCreateManyInput | AirQualityCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AirQualityIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5663,10 +5665,6 @@ export namespace Prisma {
      * Limit how many AirQualities to update.
      */
     limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AirQualityIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5736,6 +5734,30 @@ export namespace Prisma {
   }
 
   /**
+   * AirQuality.place
+   */
+  export type AirQuality$placeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Place
+     */
+    select?: PlaceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Place
+     */
+    omit?: PlaceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlaceInclude<ExtArgs> | null
+    where?: PlaceWhereInput
+    orderBy?: PlaceOrderByWithRelationInput | PlaceOrderByWithRelationInput[]
+    cursor?: PlaceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PlaceScalarFieldEnum | PlaceScalarFieldEnum[]
+  }
+
+  /**
    * AirQuality without action
    */
   export type AirQualityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5800,7 +5822,8 @@ export namespace Prisma {
     validatedByWallet: 'validatedByWallet',
     validatorFetching: 'validatorFetching',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    airQualityId: 'airQualityId'
   };
 
   export type PlaceScalarFieldEnum = (typeof PlaceScalarFieldEnum)[keyof typeof PlaceScalarFieldEnum]
@@ -6058,7 +6081,8 @@ export namespace Prisma {
     validatorFetching?: BoolFilter<"Place"> | boolean
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
-    airQuality?: AirQualityListRelationFilter
+    airQualityId?: StringNullableFilter<"Place"> | string | null
+    airQuality?: XOR<AirQualityNullableScalarRelationFilter, AirQualityWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -6073,7 +6097,8 @@ export namespace Prisma {
     validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    airQuality?: AirQualityOrderByRelationAggregateInput
+    airQualityId?: SortOrderInput | SortOrder
+    airQuality?: AirQualityOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
 
@@ -6091,7 +6116,8 @@ export namespace Prisma {
     validatorFetching?: BoolFilter<"Place"> | boolean
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
-    airQuality?: AirQualityListRelationFilter
+    airQualityId?: StringNullableFilter<"Place"> | string | null
+    airQuality?: XOR<AirQualityNullableScalarRelationFilter, AirQualityWhereInput> | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -6106,6 +6132,7 @@ export namespace Prisma {
     validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    airQualityId?: SortOrderInput | SortOrder
     _count?: PlaceCountOrderByAggregateInput
     _avg?: PlaceAvgOrderByAggregateInput
     _max?: PlaceMaxOrderByAggregateInput
@@ -6127,6 +6154,7 @@ export namespace Prisma {
     validatorFetching?: BoolWithAggregatesFilter<"Place"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Place"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Place"> | Date | string
+    airQualityId?: StringNullableWithAggregatesFilter<"Place"> | string | null
   }
 
   export type AirQualityWhereInput = {
@@ -6147,7 +6175,7 @@ export namespace Prisma {
     co?: FloatFilter<"AirQuality"> | number
     so2?: FloatFilter<"AirQuality"> | number
     no2?: FloatFilter<"AirQuality"> | number
-    place?: XOR<PlaceScalarRelationFilter, PlaceWhereInput>
+    place?: PlaceListRelationFilter
   }
 
   export type AirQualityOrderByWithRelationInput = {
@@ -6165,7 +6193,7 @@ export namespace Prisma {
     co?: SortOrder
     so2?: SortOrder
     no2?: SortOrder
-    place?: PlaceOrderByWithRelationInput
+    place?: PlaceOrderByRelationAggregateInput
   }
 
   export type AirQualityWhereUniqueInput = Prisma.AtLeast<{
@@ -6186,7 +6214,7 @@ export namespace Prisma {
     co?: FloatFilter<"AirQuality"> | number
     so2?: FloatFilter<"AirQuality"> | number
     no2?: FloatFilter<"AirQuality"> | number
-    place?: XOR<PlaceScalarRelationFilter, PlaceWhereInput>
+    place?: PlaceListRelationFilter
   }, "id">
 
   export type AirQualityOrderByWithAggregationInput = {
@@ -6357,7 +6385,7 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    airQuality?: AirQualityCreateNestedManyWithoutPlaceInput
+    airQuality?: AirQualityCreateNestedOneWithoutPlaceInput
     user: UserCreateNestedOneWithoutPlaceInput
   }
 
@@ -6372,7 +6400,7 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    airQuality?: AirQualityUncheckedCreateNestedManyWithoutPlaceInput
+    airQualityId?: string | null
   }
 
   export type PlaceUpdateInput = {
@@ -6385,7 +6413,7 @@ export namespace Prisma {
     validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    airQuality?: AirQualityUpdateManyWithoutPlaceNestedInput
+    airQuality?: AirQualityUpdateOneWithoutPlaceNestedInput
     user?: UserUpdateOneRequiredWithoutPlaceNestedInput
   }
 
@@ -6400,7 +6428,7 @@ export namespace Prisma {
     validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    airQuality?: AirQualityUncheckedUpdateManyWithoutPlaceNestedInput
+    airQualityId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PlaceCreateManyInput = {
@@ -6414,6 +6442,7 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    airQualityId?: string | null
   }
 
   export type PlaceUpdateManyMutationInput = {
@@ -6439,10 +6468,12 @@ export namespace Prisma {
     validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    airQualityId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AirQualityCreateInput = {
     id?: string
+    placeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     status: $Enums.AirStatus
@@ -6455,7 +6486,7 @@ export namespace Prisma {
     co: number
     so2: number
     no2: number
-    place: PlaceCreateNestedOneWithoutAirQualityInput
+    place?: PlaceCreateNestedManyWithoutAirQualityInput
   }
 
   export type AirQualityUncheckedCreateInput = {
@@ -6473,10 +6504,12 @@ export namespace Prisma {
     co: number
     so2: number
     no2: number
+    place?: PlaceUncheckedCreateNestedManyWithoutAirQualityInput
   }
 
   export type AirQualityUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    placeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
@@ -6489,7 +6522,7 @@ export namespace Prisma {
     co?: FloatFieldUpdateOperationsInput | number
     so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
-    place?: PlaceUpdateOneRequiredWithoutAirQualityNestedInput
+    place?: PlaceUpdateManyWithoutAirQualityNestedInput
   }
 
   export type AirQualityUncheckedUpdateInput = {
@@ -6507,6 +6540,7 @@ export namespace Prisma {
     co?: FloatFieldUpdateOperationsInput | number
     so2?: FloatFieldUpdateOperationsInput | number
     no2?: FloatFieldUpdateOperationsInput | number
+    place?: PlaceUncheckedUpdateManyWithoutAirQualityNestedInput
   }
 
   export type AirQualityCreateManyInput = {
@@ -6528,6 +6562,7 @@ export namespace Prisma {
 
   export type AirQualityUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    placeId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
@@ -6764,19 +6799,14 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type AirQualityListRelationFilter = {
-    every?: AirQualityWhereInput
-    some?: AirQualityWhereInput
-    none?: AirQualityWhereInput
+  export type AirQualityNullableScalarRelationFilter = {
+    is?: AirQualityWhereInput | null
+    isNot?: AirQualityWhereInput | null
   }
 
   export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
-  }
-
-  export type AirQualityOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type PlaceCountOrderByAggregateInput = {
@@ -6790,6 +6820,7 @@ export namespace Prisma {
     validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    airQualityId?: SortOrder
   }
 
   export type PlaceAvgOrderByAggregateInput = {
@@ -6808,6 +6839,7 @@ export namespace Prisma {
     validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    airQualityId?: SortOrder
   }
 
   export type PlaceMinOrderByAggregateInput = {
@@ -6821,6 +6853,7 @@ export namespace Prisma {
     validatorFetching?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    airQualityId?: SortOrder
   }
 
   export type PlaceSumOrderByAggregateInput = {
@@ -6857,11 +6890,6 @@ export namespace Prisma {
     in?: $Enums.AirStatus[] | ListEnumAirStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.AirStatus[] | ListEnumAirStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumAirStatusFilter<$PrismaModel> | $Enums.AirStatus
-  }
-
-  export type PlaceScalarRelationFilter = {
-    is?: PlaceWhereInput
-    isNot?: PlaceWhereInput
   }
 
   export type AirQualityCountOrderByAggregateInput = {
@@ -7011,24 +7039,16 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type AirQualityCreateNestedManyWithoutPlaceInput = {
-    create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput> | AirQualityCreateWithoutPlaceInput[] | AirQualityUncheckedCreateWithoutPlaceInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput | AirQualityCreateOrConnectWithoutPlaceInput[]
-    createMany?: AirQualityCreateManyPlaceInputEnvelope
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
+  export type AirQualityCreateNestedOneWithoutPlaceInput = {
+    create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput>
+    connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput
+    connect?: AirQualityWhereUniqueInput
   }
 
   export type UserCreateNestedOneWithoutPlaceInput = {
     create?: XOR<UserCreateWithoutPlaceInput, UserUncheckedCreateWithoutPlaceInput>
     connectOrCreate?: UserCreateOrConnectWithoutPlaceInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type AirQualityUncheckedCreateNestedManyWithoutPlaceInput = {
-    create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput> | AirQualityCreateWithoutPlaceInput[] | AirQualityUncheckedCreateWithoutPlaceInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput | AirQualityCreateOrConnectWithoutPlaceInput[]
-    createMany?: AirQualityCreateManyPlaceInputEnvelope
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -7043,18 +7063,14 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type AirQualityUpdateManyWithoutPlaceNestedInput = {
-    create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput> | AirQualityCreateWithoutPlaceInput[] | AirQualityUncheckedCreateWithoutPlaceInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput | AirQualityCreateOrConnectWithoutPlaceInput[]
-    upsert?: AirQualityUpsertWithWhereUniqueWithoutPlaceInput | AirQualityUpsertWithWhereUniqueWithoutPlaceInput[]
-    createMany?: AirQualityCreateManyPlaceInputEnvelope
-    set?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    disconnect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    delete?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    update?: AirQualityUpdateWithWhereUniqueWithoutPlaceInput | AirQualityUpdateWithWhereUniqueWithoutPlaceInput[]
-    updateMany?: AirQualityUpdateManyWithWhereWithoutPlaceInput | AirQualityUpdateManyWithWhereWithoutPlaceInput[]
-    deleteMany?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
+  export type AirQualityUpdateOneWithoutPlaceNestedInput = {
+    create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput>
+    connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput
+    upsert?: AirQualityUpsertWithoutPlaceInput
+    disconnect?: AirQualityWhereInput | boolean
+    delete?: AirQualityWhereInput | boolean
+    connect?: AirQualityWhereUniqueInput
+    update?: XOR<XOR<AirQualityUpdateToOneWithWhereWithoutPlaceInput, AirQualityUpdateWithoutPlaceInput>, AirQualityUncheckedUpdateWithoutPlaceInput>
   }
 
   export type UserUpdateOneRequiredWithoutPlaceNestedInput = {
@@ -7065,36 +7081,50 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPlaceInput, UserUpdateWithoutPlaceInput>, UserUncheckedUpdateWithoutPlaceInput>
   }
 
-  export type AirQualityUncheckedUpdateManyWithoutPlaceNestedInput = {
-    create?: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput> | AirQualityCreateWithoutPlaceInput[] | AirQualityUncheckedCreateWithoutPlaceInput[]
-    connectOrCreate?: AirQualityCreateOrConnectWithoutPlaceInput | AirQualityCreateOrConnectWithoutPlaceInput[]
-    upsert?: AirQualityUpsertWithWhereUniqueWithoutPlaceInput | AirQualityUpsertWithWhereUniqueWithoutPlaceInput[]
-    createMany?: AirQualityCreateManyPlaceInputEnvelope
-    set?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    disconnect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    delete?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    connect?: AirQualityWhereUniqueInput | AirQualityWhereUniqueInput[]
-    update?: AirQualityUpdateWithWhereUniqueWithoutPlaceInput | AirQualityUpdateWithWhereUniqueWithoutPlaceInput[]
-    updateMany?: AirQualityUpdateManyWithWhereWithoutPlaceInput | AirQualityUpdateManyWithWhereWithoutPlaceInput[]
-    deleteMany?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
+  export type PlaceCreateNestedManyWithoutAirQualityInput = {
+    create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput> | PlaceCreateWithoutAirQualityInput[] | PlaceUncheckedCreateWithoutAirQualityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput | PlaceCreateOrConnectWithoutAirQualityInput[]
+    createMany?: PlaceCreateManyAirQualityInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
   }
 
-  export type PlaceCreateNestedOneWithoutAirQualityInput = {
-    create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
-    connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput
-    connect?: PlaceWhereUniqueInput
+  export type PlaceUncheckedCreateNestedManyWithoutAirQualityInput = {
+    create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput> | PlaceCreateWithoutAirQualityInput[] | PlaceUncheckedCreateWithoutAirQualityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput | PlaceCreateOrConnectWithoutAirQualityInput[]
+    createMany?: PlaceCreateManyAirQualityInputEnvelope
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
   }
 
   export type EnumAirStatusFieldUpdateOperationsInput = {
     set?: $Enums.AirStatus
   }
 
-  export type PlaceUpdateOneRequiredWithoutAirQualityNestedInput = {
-    create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
-    connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput
-    upsert?: PlaceUpsertWithoutAirQualityInput
-    connect?: PlaceWhereUniqueInput
-    update?: XOR<XOR<PlaceUpdateToOneWithWhereWithoutAirQualityInput, PlaceUpdateWithoutAirQualityInput>, PlaceUncheckedUpdateWithoutAirQualityInput>
+  export type PlaceUpdateManyWithoutAirQualityNestedInput = {
+    create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput> | PlaceCreateWithoutAirQualityInput[] | PlaceUncheckedCreateWithoutAirQualityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput | PlaceCreateOrConnectWithoutAirQualityInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutAirQualityInput | PlaceUpsertWithWhereUniqueWithoutAirQualityInput[]
+    createMany?: PlaceCreateManyAirQualityInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutAirQualityInput | PlaceUpdateWithWhereUniqueWithoutAirQualityInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutAirQualityInput | PlaceUpdateManyWithWhereWithoutAirQualityInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
+  }
+
+  export type PlaceUncheckedUpdateManyWithoutAirQualityNestedInput = {
+    create?: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput> | PlaceCreateWithoutAirQualityInput[] | PlaceUncheckedCreateWithoutAirQualityInput[]
+    connectOrCreate?: PlaceCreateOrConnectWithoutAirQualityInput | PlaceCreateOrConnectWithoutAirQualityInput[]
+    upsert?: PlaceUpsertWithWhereUniqueWithoutAirQualityInput | PlaceUpsertWithWhereUniqueWithoutAirQualityInput[]
+    createMany?: PlaceCreateManyAirQualityInputEnvelope
+    set?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    disconnect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    delete?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    connect?: PlaceWhereUniqueInput | PlaceWhereUniqueInput[]
+    update?: PlaceUpdateWithWhereUniqueWithoutAirQualityInput | PlaceUpdateWithWhereUniqueWithoutAirQualityInput[]
+    updateMany?: PlaceUpdateManyWithWhereWithoutAirQualityInput | PlaceUpdateManyWithWhereWithoutAirQualityInput[]
+    deleteMany?: PlaceScalarWhereInput | PlaceScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7289,7 +7319,7 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    airQuality?: AirQualityCreateNestedManyWithoutPlaceInput
+    airQuality?: AirQualityCreateNestedOneWithoutPlaceInput
   }
 
   export type PlaceUncheckedCreateWithoutUserInput = {
@@ -7302,7 +7332,7 @@ export namespace Prisma {
     validatorFetching?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    airQuality?: AirQualityUncheckedCreateNestedManyWithoutPlaceInput
+    airQualityId?: string | null
   }
 
   export type PlaceCreateOrConnectWithoutUserInput = {
@@ -7345,10 +7375,12 @@ export namespace Prisma {
     validatorFetching?: BoolFilter<"Place"> | boolean
     createdAt?: DateTimeFilter<"Place"> | Date | string
     updatedAt?: DateTimeFilter<"Place"> | Date | string
+    airQualityId?: StringNullableFilter<"Place"> | string | null
   }
 
   export type AirQualityCreateWithoutPlaceInput = {
     id?: string
+    placeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     status: $Enums.AirStatus
@@ -7365,6 +7397,7 @@ export namespace Prisma {
 
   export type AirQualityUncheckedCreateWithoutPlaceInput = {
     id?: string
+    placeId: string
     createdAt?: Date | string
     updatedAt?: Date | string
     status: $Enums.AirStatus
@@ -7382,11 +7415,6 @@ export namespace Prisma {
   export type AirQualityCreateOrConnectWithoutPlaceInput = {
     where: AirQualityWhereUniqueInput
     create: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput>
-  }
-
-  export type AirQualityCreateManyPlaceInputEnvelope = {
-    data: AirQualityCreateManyPlaceInput | AirQualityCreateManyPlaceInput[]
-    skipDuplicates?: boolean
   }
 
   export type UserCreateWithoutPlaceInput = {
@@ -7410,40 +7438,49 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutPlaceInput, UserUncheckedCreateWithoutPlaceInput>
   }
 
-  export type AirQualityUpsertWithWhereUniqueWithoutPlaceInput = {
-    where: AirQualityWhereUniqueInput
+  export type AirQualityUpsertWithoutPlaceInput = {
     update: XOR<AirQualityUpdateWithoutPlaceInput, AirQualityUncheckedUpdateWithoutPlaceInput>
     create: XOR<AirQualityCreateWithoutPlaceInput, AirQualityUncheckedCreateWithoutPlaceInput>
+    where?: AirQualityWhereInput
   }
 
-  export type AirQualityUpdateWithWhereUniqueWithoutPlaceInput = {
-    where: AirQualityWhereUniqueInput
+  export type AirQualityUpdateToOneWithWhereWithoutPlaceInput = {
+    where?: AirQualityWhereInput
     data: XOR<AirQualityUpdateWithoutPlaceInput, AirQualityUncheckedUpdateWithoutPlaceInput>
   }
 
-  export type AirQualityUpdateManyWithWhereWithoutPlaceInput = {
-    where: AirQualityScalarWhereInput
-    data: XOR<AirQualityUpdateManyMutationInput, AirQualityUncheckedUpdateManyWithoutPlaceInput>
+  export type AirQualityUpdateWithoutPlaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    placeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
+    aqi?: IntFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    no?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    co?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
   }
 
-  export type AirQualityScalarWhereInput = {
-    AND?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
-    OR?: AirQualityScalarWhereInput[]
-    NOT?: AirQualityScalarWhereInput | AirQualityScalarWhereInput[]
-    id?: StringFilter<"AirQuality"> | string
-    placeId?: StringFilter<"AirQuality"> | string
-    createdAt?: DateTimeFilter<"AirQuality"> | Date | string
-    updatedAt?: DateTimeFilter<"AirQuality"> | Date | string
-    status?: EnumAirStatusFilter<"AirQuality"> | $Enums.AirStatus
-    aqi?: IntFilter<"AirQuality"> | number
-    pm25?: FloatFilter<"AirQuality"> | number
-    no?: FloatFilter<"AirQuality"> | number
-    o3?: FloatFilter<"AirQuality"> | number
-    nh3?: FloatFilter<"AirQuality"> | number
-    pm10?: FloatFilter<"AirQuality"> | number
-    co?: FloatFilter<"AirQuality"> | number
-    so2?: FloatFilter<"AirQuality"> | number
-    no2?: FloatFilter<"AirQuality"> | number
+  export type AirQualityUncheckedUpdateWithoutPlaceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    placeId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
+    aqi?: IntFieldUpdateOperationsInput | number
+    pm25?: FloatFieldUpdateOperationsInput | number
+    no?: FloatFieldUpdateOperationsInput | number
+    o3?: FloatFieldUpdateOperationsInput | number
+    nh3?: FloatFieldUpdateOperationsInput | number
+    pm10?: FloatFieldUpdateOperationsInput | number
+    co?: FloatFieldUpdateOperationsInput | number
+    so2?: FloatFieldUpdateOperationsInput | number
+    no2?: FloatFieldUpdateOperationsInput | number
   }
 
   export type UserUpsertWithoutPlaceInput = {
@@ -7504,15 +7541,90 @@ export namespace Prisma {
     create: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
   }
 
-  export type PlaceUpsertWithoutAirQualityInput = {
-    update: XOR<PlaceUpdateWithoutAirQualityInput, PlaceUncheckedUpdateWithoutAirQualityInput>
-    create: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
-    where?: PlaceWhereInput
+  export type PlaceCreateManyAirQualityInputEnvelope = {
+    data: PlaceCreateManyAirQualityInput | PlaceCreateManyAirQualityInput[]
+    skipDuplicates?: boolean
   }
 
-  export type PlaceUpdateToOneWithWhereWithoutAirQualityInput = {
-    where?: PlaceWhereInput
+  export type PlaceUpsertWithWhereUniqueWithoutAirQualityInput = {
+    where: PlaceWhereUniqueInput
+    update: XOR<PlaceUpdateWithoutAirQualityInput, PlaceUncheckedUpdateWithoutAirQualityInput>
+    create: XOR<PlaceCreateWithoutAirQualityInput, PlaceUncheckedCreateWithoutAirQualityInput>
+  }
+
+  export type PlaceUpdateWithWhereUniqueWithoutAirQualityInput = {
+    where: PlaceWhereUniqueInput
     data: XOR<PlaceUpdateWithoutAirQualityInput, PlaceUncheckedUpdateWithoutAirQualityInput>
+  }
+
+  export type PlaceUpdateManyWithWhereWithoutAirQualityInput = {
+    where: PlaceScalarWhereInput
+    data: XOR<PlaceUpdateManyMutationInput, PlaceUncheckedUpdateManyWithoutAirQualityInput>
+  }
+
+  export type PlaceCreateManyUserInput = {
+    id?: string
+    placeName: string
+    latitude: number
+    longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    airQualityId?: string | null
+  }
+
+  export type PlaceUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    airQuality?: AirQualityUpdateOneWithoutPlaceNestedInput
+  }
+
+  export type PlaceUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    airQualityId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PlaceUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    placeName?: StringFieldUpdateOperationsInput | string
+    latitude?: FloatFieldUpdateOperationsInput | number
+    longitude?: FloatFieldUpdateOperationsInput | number
+    disabled?: BoolFieldUpdateOperationsInput | boolean
+    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    airQualityId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PlaceCreateManyAirQualityInput = {
+    id?: string
+    userId: string
+    placeName: string
+    latitude: number
+    longitude: number
+    disabled?: boolean
+    validatedByWallet?: string | null
+    validatorFetching?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type PlaceUpdateWithoutAirQualityInput = {
@@ -7541,20 +7653,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type PlaceCreateManyUserInput = {
-    id?: string
-    placeName: string
-    latitude: number
-    longitude: number
-    disabled?: boolean
-    validatedByWallet?: string | null
-    validatorFetching?: boolean
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type PlaceUpdateWithoutUserInput = {
+  export type PlaceUncheckedUpdateManyWithoutAirQualityInput = {
     id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
     placeName?: StringFieldUpdateOperationsInput | string
     latitude?: FloatFieldUpdateOperationsInput | number
     longitude?: FloatFieldUpdateOperationsInput | number
@@ -7563,96 +7664,6 @@ export namespace Prisma {
     validatorFetching?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    airQuality?: AirQualityUpdateManyWithoutPlaceNestedInput
-  }
-
-  export type PlaceUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    placeName?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
-    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    airQuality?: AirQualityUncheckedUpdateManyWithoutPlaceNestedInput
-  }
-
-  export type PlaceUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    placeName?: StringFieldUpdateOperationsInput | string
-    latitude?: FloatFieldUpdateOperationsInput | number
-    longitude?: FloatFieldUpdateOperationsInput | number
-    disabled?: BoolFieldUpdateOperationsInput | boolean
-    validatedByWallet?: NullableStringFieldUpdateOperationsInput | string | null
-    validatorFetching?: BoolFieldUpdateOperationsInput | boolean
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type AirQualityCreateManyPlaceInput = {
-    id?: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    status: $Enums.AirStatus
-    aqi: number
-    pm25: number
-    no: number
-    o3: number
-    nh3: number
-    pm10: number
-    co: number
-    so2: number
-    no2: number
-  }
-
-  export type AirQualityUpdateWithoutPlaceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
-    aqi?: IntFieldUpdateOperationsInput | number
-    pm25?: FloatFieldUpdateOperationsInput | number
-    no?: FloatFieldUpdateOperationsInput | number
-    o3?: FloatFieldUpdateOperationsInput | number
-    nh3?: FloatFieldUpdateOperationsInput | number
-    pm10?: FloatFieldUpdateOperationsInput | number
-    co?: FloatFieldUpdateOperationsInput | number
-    so2?: FloatFieldUpdateOperationsInput | number
-    no2?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type AirQualityUncheckedUpdateWithoutPlaceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
-    aqi?: IntFieldUpdateOperationsInput | number
-    pm25?: FloatFieldUpdateOperationsInput | number
-    no?: FloatFieldUpdateOperationsInput | number
-    o3?: FloatFieldUpdateOperationsInput | number
-    nh3?: FloatFieldUpdateOperationsInput | number
-    pm10?: FloatFieldUpdateOperationsInput | number
-    co?: FloatFieldUpdateOperationsInput | number
-    so2?: FloatFieldUpdateOperationsInput | number
-    no2?: FloatFieldUpdateOperationsInput | number
-  }
-
-  export type AirQualityUncheckedUpdateManyWithoutPlaceInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    status?: EnumAirStatusFieldUpdateOperationsInput | $Enums.AirStatus
-    aqi?: IntFieldUpdateOperationsInput | number
-    pm25?: FloatFieldUpdateOperationsInput | number
-    no?: FloatFieldUpdateOperationsInput | number
-    o3?: FloatFieldUpdateOperationsInput | number
-    nh3?: FloatFieldUpdateOperationsInput | number
-    pm10?: FloatFieldUpdateOperationsInput | number
-    co?: FloatFieldUpdateOperationsInput | number
-    so2?: FloatFieldUpdateOperationsInput | number
-    no2?: FloatFieldUpdateOperationsInput | number
   }
 
 

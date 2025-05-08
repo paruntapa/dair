@@ -60,7 +60,7 @@ async function validateHandler(ws: WebSocket, { lat, lng, placeId, callbackId }:
                 placeId,
                 validatorId,
                 signedMessage: signature,
-                aqi: data.list[0].components.aqi,
+                aqi: data.list[0].main.aqi,
                 pm25: data.list[0].components.pm2_5,
                 pm10: data.list[0].components.pm10,
                 co: data.list[0].components.co,
@@ -96,4 +96,4 @@ main();
 
 setInterval(async () => {
 
-}, 10000);
+}, 1000);

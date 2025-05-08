@@ -104,10 +104,15 @@ setInterval(async () => {
     const placesToGetAirQuality = await prismaClient.place.findMany({
         where: {
             disabled: false,
+            airQuality: {
+                is: null,
+            },
         },
     });
+    console.log(`Found ${placesToGetAirQuality.length} places to get air quality for`);
 
     for (const place of placesToGetAirQuality) {
+        console.log("availableValidators", availableValidators);
         availableValidators.forEach(async (validator) => {
             const callbackId = randomUUIDv7();
             console.log(`Sending validate to ${validator.validatorId} ${place.placeName}`);
@@ -132,7 +137,9 @@ setInterval(async () => {
 
             CALLBACKS[callbackId] = async (data: IncomingMessage) => {
                 if (data.type === 'validate') {
+                    console.log(`Received validate from ${validator.validatorId} ${place.placeName}`);
                     const { validatorId, signedMessage, aqi, pm25, pm10, co, no, so2, nh3, no2, o3 } = data.data;
+                    console.log("data.data", data.data);
                     const verified = await verifyMessage(
                         `Replying to ${callbackId}`,
                         validator.publicKey,
@@ -157,6 +164,11 @@ setInterval(async () => {
                         await tx.airQuality.create({
                             data: {
                                 placeId: place.id,
+                                place: {
+                                    connect: {
+                                        id: place.id,
+                                    },
+                                },
                                 aqi,
                                 pm25,
                                 pm10,
@@ -181,4 +193,4 @@ setInterval(async () => {
             };
         });
     }
-}, 60 * 1000);
+}, 1000);

@@ -130,8 +130,13 @@ router.get("/air-quality", async (req: Request, res: Response): Promise<any> => 
         where: {
             userId: id,
             disabled: false
+        },
+        include: {
+            airQuality: true
         }
     })
+
+    console.log("places", places);
     
     res.json({
         places

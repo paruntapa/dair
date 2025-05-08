@@ -3,19 +3,19 @@
  */
 export const getStatusColor = (status: string): string => {
   switch (status) {
-    case 'Good':
-      return 'bg-green-500';
-    case 'Moderate':
-      return 'bg-yellow-500';
-    case 'Better not go out':
-      return 'bg-orange-500';
-    case 'Unhealthy':
-      return 'bg-red-500';
-    case 'Very Unhealthy':
-      return 'bg-purple-500';
-    case 'Hazardous':
-      return 'bg-rose-900';
+    case 'GOOD':
+      return 'bg-green-500 hover:bg-green-600';
+    case 'MODERATE':
+      return 'bg-yellow-600 hover:bg-yellow-800';
+    case 'BETTER_NOT_GO_OUT':
+      return 'bg-orange-500 hover:bg-orange-600';
+    case 'UNHEALTHY':
+      return 'bg-red-500 hover:bg-red-600';
+    case 'VERY_UNHEALTHY':
+      return 'bg-purple-500 hover:bg-purple-600';
+    case 'HAZARDOUS':
+      return 'bg-rose-900 hover:bg-rose-950';
     default:
-      return 'bg-gray-500';
+      return 'bg-gray-500 hover:bg-gray-600';
   }
 }; 

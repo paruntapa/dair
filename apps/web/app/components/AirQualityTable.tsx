@@ -17,7 +17,7 @@ export interface AirQualityData {
   co?: number;
   so2?: number;
   updatedAt?: string;
-  status?: 'Good' | 'Moderate' | 'Better not go out' | 'Unhealthy' | 'Very Unhealthy' | 'Hazardous';
+  status?: 'Good' | 'Moderate' | 'Better not go out' | 'Unhealthy' | 'VERY_UNHEALTHY' | 'Hazardous';
   validatorFetching?: boolean;
 }
 
@@ -166,7 +166,7 @@ export const AirQualityTable: React.FC<AirQualityTableProps> = ({ data, isLoadin
                 </td>
                 <td className="py-3 px-4 text-center">
                   {item.status ? (
-                    <span className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(item.status)} text-white`}>
+                    <span className={`px-2 py-1 inline-flex text-xs leading-5 cursor-pointer font-semibold rounded-full ${getStatusColor(item.status)} text-white`}>
                       {item.status}
                     </span>
                   ) : (
