@@ -1,4 +1,4 @@
-import { randomUUIDv7 } from "bun";
+import { randomUUID } from "crypto";
 import type { OutgoingMessage, SignupOutgoingMessage, ValidateOutgoingMessage } from "common/types";
 import { Keypair } from "@solana/web3.js";
 import nacl from "tweetnacl";
@@ -25,7 +25,7 @@ async function main() {
     }
 
     ws.onopen = async () => {
-        const callbackId = randomUUIDv7();
+        const callbackId = randomUUID();
         CALLBACKS[callbackId] = (data: SignupOutgoingMessage) => {
             validatorId = data.validatorId;
         }

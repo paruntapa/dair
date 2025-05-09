@@ -6,10 +6,60 @@ import nacl from "tweetnacl";
 import nacl_util from "tweetnacl-util";
 import { AirStatus } from "../../packages/db/generated/prisma";
 
+interface RequestPlacesMessage {
+  type: 'request_places';
+  data: {
+    callbackId: string;
+  };
+}
+
+interface ValidateRequestMessage {
+  type: 'validate';
+  data: {
+    placeId: string;
+    lat: number;
+    lng: number;
+    callbackId: string;
+    placeName?: string;
+  };
+}
+
+interface ValidateResponseMessage {
+  type: 'validate';
+  data: {
+    validatorId: string;
+    signedMessage: number[];
+    aqi: number;
+    pm25: number;
+    pm10: number;
+    co: number;
+    no: number;
+    so2: number;
+    nh3: number;
+    no2: number;
+    o3: number;
+    callbackId: string;
+  };
+}
+
+type WebSocketMessage = IncomingMessage | RequestPlacesMessage | ValidateRequestMessage | ValidateResponseMessage;
+
 const availableValidators: { validatorId: string, socket: ServerWebSocket<unknown>, publicKey: string }[] = [];
 
-const CALLBACKS : { [callbackId: string]: (data: IncomingMessage) => void } = {}
+const CALLBACKS : { [callbackId: string]: (data: ValidateResponseMessage) => void } = {}
 const COST_PER_VALIDATION = 100; // in lamports
+
+async function verifyMessage(message: string, publicKey: string, signature: number[] | string) {
+    const messageBytes = nacl_util.decodeUTF8(message);
+    const signatureBytes = typeof signature === 'string' ? JSON.parse(signature) : signature;
+    const result = nacl.sign.detached.verify(
+        messageBytes,
+        new Uint8Array(signatureBytes),
+        new PublicKey(publicKey).toBytes(),
+    );
+
+    return result;
+}
 
 Bun.serve({
     fetch(req, server) {
@@ -21,10 +71,9 @@ Bun.serve({
     port: 8081,
     websocket: {
         async message(ws: ServerWebSocket<unknown>, message: string) {
-            const data: IncomingMessage = JSON.parse(message);
+            const data: WebSocketMessage = JSON.parse(message);
             
             if (data.type === 'signup') {
-
                 const verified = await verifyMessage(
                     `Signed message for ${data.data.callbackId}, ${data.data.publicKey}`,
                     data.data.publicKey,
@@ -34,8 +83,177 @@ Bun.serve({
                     await signupHandler(ws, data.data);
                 }
             } else if (data.type === 'validate') {
-                CALLBACKS[data.data.callbackId]?.(data);
-                delete CALLBACKS[data.data.callbackId];
+                if ('validatorId' in data.data) {
+                    const responseData = data as ValidateResponseMessage;
+                    CALLBACKS[responseData.data.callbackId]?.(responseData);
+                    delete CALLBACKS[responseData.data.callbackId];
+                } else {
+                    const requestData = data as ValidateRequestMessage;
+                    const validator = availableValidators.find(v => v.socket === ws);
+                    if (!validator) {
+                        ws.send(JSON.stringify({
+                            type: 'error',
+                            data: {
+                                message: 'Validator not found. Please sign up first.',
+                                callbackId: requestData.data.callbackId
+                            }
+                        }));
+                        return;
+                    }
+
+                    const placesToValidate = await prismaClient.place.findMany({
+                        where: {
+                            disabled: false,
+                            airQuality: {
+                                is: null,
+                            },
+                            validatorFetching: false,
+                        },
+                    });
+
+                    if (placesToValidate.length === 0) {
+                        ws.send(JSON.stringify({
+                            type: 'no_places',
+                            data: {
+                                callbackId: requestData.data.callbackId
+                            }
+                        }));
+                        return;
+                    }
+
+                    placesToValidate.forEach(place => {
+                        const callbackId = randomUUIDv7();
+                        ws.send(JSON.stringify({
+                            type: 'validate',
+                            data: {
+                                placeId: place.id,
+                                lat: place.latitude,
+                                lng: place.longitude,
+                                placeName: place.placeName,
+                                callbackId
+                            }
+                        }));
+
+                        prismaClient.place.update({
+                            where: {
+                                id: place.id,
+                            },
+                            data: {
+                                validatorFetching: true,
+                            }
+                        }).catch(console.error);
+                    });
+                }
+            } else if (data.type === 'request_places') {
+                console.log("request_places", data.data)
+                const requestData = data as RequestPlacesMessage;
+                const validator = availableValidators.find(v => v.socket === ws);
+                if (!validator) {
+                    ws.send(JSON.stringify({
+                        type: 'error',
+                        data: {
+                            message: 'Validator not found. Please sign up first.',
+                            callbackId: requestData.data.callbackId
+                        }
+                    }));
+                    return;
+                }
+
+                const placesToValidate = await prismaClient.place.findMany({
+                    where: {
+                        disabled: false,
+                        airQuality: {
+                            is: null,
+                        },
+                        validatorFetching: false,
+                    },
+                    take: 10,
+                });
+                console.log("placesToValidate", placesToValidate)
+
+                if (placesToValidate.length === 0) {
+                    ws.send(JSON.stringify({
+                        type: 'no_places',
+                        data: {
+                            callbackId: requestData.data.callbackId
+                        }
+                    }));
+                    return;
+                }
+                console.log("have palces to validate")
+
+                placesToValidate.forEach(place => {
+                    const callbackId = randomUUIDv7();
+                    ws.send(JSON.stringify({
+                        type: 'validate',
+                        data: {
+                            placeId: place.id,
+                            lat: place.latitude,
+                            lng: place.longitude,
+                            placeName: place.placeName,
+                            callbackId
+                        }
+                    }));
+
+                    CALLBACKS[callbackId] = async (data: ValidateResponseMessage) => {
+                        if (data.type === 'validate') {
+                            console.log(`Received validate from ${validator.validatorId} ${place.placeName}`);
+                            const { validatorId, signedMessage, aqi, pm25, pm10, co, no, so2, nh3, no2, o3 } = data.data;
+                            console.log("data.data", data.data);
+                            const verified = await verifyMessage(
+                                `Replying to ${callbackId}`,
+                                validator.publicKey,
+                                signedMessage
+                            );
+                            if (!verified) {
+                                return;
+                            }
+        
+                            await prismaClient.$transaction(async (tx) => {
+        
+                                await tx.place.update({
+                                    where: {
+                                        id: place.id,
+                                    },
+                                    data: {
+                                        validatedByWallet: validator.publicKey,
+                                        validatorFetching: false,
+                                    }
+                                });
+        
+                                await tx.airQuality.create({
+                                    data: {
+                                        placeId: place.id,
+                                        place: {
+                                            connect: {
+                                                id: place.id,
+                                            },
+                                        },
+                                        aqi,
+                                        pm25,
+                                        pm10,
+                                        co,
+                                        no,
+                                        so2,
+                                        nh3,
+                                        no2,
+                                        o3,
+                                        status: aqi === 1 ? AirStatus.GOOD : aqi === 2 ? AirStatus.MODERATE : aqi === 3 ? AirStatus.UNHEALTHY : aqi === 4 ? AirStatus.VERY_UNHEALTHY : AirStatus.SEVERE,
+                                    },
+                                });
+        
+                                await tx.validator.update({
+                                    where: {
+                                        walletAddress: validatorId
+                                    },
+                                    data: {
+                                        pendingPayouts: { increment: COST_PER_VALIDATION },
+                                    },
+                                });
+                            });
+                        }
+                    };
+                });
             }
         },
         async close(ws: ServerWebSocket<unknown>) {
@@ -89,15 +307,9 @@ async function signupHandler(ws: ServerWebSocket<unknown>, { publicKey, signedMe
     });
 }
 
-async function verifyMessage(message: string, publicKey: string, signature: string) {
-    const messageBytes = nacl_util.decodeUTF8(message);
-    const result = nacl.sign.detached.verify(
-        messageBytes,
-        new Uint8Array(JSON.parse(signature)),
-        new PublicKey(publicKey).toBytes(),
-    );
-
-    return result;
+const callCallBack = (callbackId: string, data: ValidateResponseMessage) => {
+    CALLBACKS[callbackId]?.(data);
+    delete CALLBACKS[callbackId];
 }
 
 setInterval(async () => {
@@ -119,6 +331,7 @@ setInterval(async () => {
             validator.socket.send(JSON.stringify({
                 type: 'validate',
                 data: {
+                    placeName: place.placeName,
                     placeId: place.id,
                     lat: place.latitude,
                     lng: place.longitude,
@@ -131,11 +344,12 @@ setInterval(async () => {
                     id: place.id,
                 },
                 data: {
+                    validatedByWallet: validator.publicKey,
                     validatorFetching: true,
                 }
             });
 
-            CALLBACKS[callbackId] = async (data: IncomingMessage) => {
+            CALLBACKS[callbackId] = async (data: ValidateResponseMessage) => {
                 if (data.type === 'validate') {
                     console.log(`Received validate from ${validator.validatorId} ${place.placeName}`);
                     const { validatorId, signedMessage, aqi, pm25, pm10, co, no, so2, nh3, no2, o3 } = data.data;
@@ -183,7 +397,9 @@ setInterval(async () => {
                         });
 
                         await tx.validator.update({
-                            where: { id: validatorId },
+                            where: {
+                                walletAddress: validatorId
+                            },
                             data: {
                                 pendingPayouts: { increment: COST_PER_VALIDATION },
                             },
@@ -193,4 +409,4 @@ setInterval(async () => {
             };
         });
     }
-}, 1000);
+}, 60 * 1000);

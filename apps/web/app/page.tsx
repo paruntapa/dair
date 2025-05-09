@@ -1,7 +1,4 @@
 import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
-import { Loader } from "@solana/web3.js";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -21,8 +18,10 @@ const ThemeImage = (props: Props) => {
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center h-screen">
-      Decentralized Air Quality Monitoring System
+    <div className="relative min-h-screen">
+      <div className="relative z-10">
+        
+      </div>
     </div>
   );
 }

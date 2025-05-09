@@ -27,7 +27,7 @@ export default function RootLayout({
       <WalletProvider wallets={wallets} autoConnect>
         <WalletModalProvider>
           <AuthProvider>
-            <div className="min-h-screen bg-black">
+            <div className="min-h-screen ">
               <AppBar />
               {children}
             </div>

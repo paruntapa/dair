@@ -5,7 +5,7 @@ import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 export const ConnectWalletScreen: React.FC = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen  p-4">
       <div className="flex flex-col items-center justify-center gap-8 max-w-md w-full">
         <div className="flex items-center justify-center w-12 h-12 bg-gray-800 rounded-full">
           <svg 
